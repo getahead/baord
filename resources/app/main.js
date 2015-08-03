@@ -1,15 +1,28 @@
 require('marionette');
 
+'use strict';
 
-var BodyView = Backbone.Marionette.ItemView.extend({
-    template : false,
+var App,
+    app;
+
+App = Marionette.Application.extend({
+    regions : {
+        someRegion: "#header",
+        anotherRegion: "#main"
+    },
 
     initialize : function () {
-        console.log('here we can see');
-        console.log($);
-    }
-})
 
-var bodyView = new BodyView({
-    el : $('body')
-})
+    }
+});
+
+app = new App();
+
+app.on('start', function () {
+    Backbone.history.start();
+});
+
+
+$(function () {
+    app.start();
+}());

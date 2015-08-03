@@ -9,8 +9,8 @@ module.exports = {
     },
 
     output : {
-        path          : 'public/javascripts',
-        publicPath    : "/javascript/",
+        path          : 'public/js',
+        publicPath    : "/js/",
         filename      : "[name].js",
         chunkFilename : "[chunkhash].js"
     },
@@ -31,6 +31,9 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             _ : "underscore"
+        }),
+        new webpack.ProvidePlugin({
+            Marionette : "marionette"
         })
     ]
 }
