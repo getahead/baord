@@ -1,6 +1,3 @@
 {
-  "directory" : "resources/vendor",
-  "strict-ssl": false,
-  "proxy" : "http://localhost:3128",
-  "https-proxy" : "http://localhost:3128"
+  "directory" : "resources/vendor"
 }

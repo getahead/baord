@@ -29,19 +29,6 @@ module.exports = function (grunt) {
                 debug   : true
             }
         },
-        'webpack-dev-server': {
-            options: {
-                webpack: webpackConfig,
-                publicPath: "/" + webpackConfig.output.publicPath
-            },
-            start: {
-                keepAlive: true,
-                webpack: {
-                    devtool: "eval",
-                    debug: true
-                }
-            }
-        },
         watch: {
             app: {
                 files: ["public/**/*", "resources/**/*"],
