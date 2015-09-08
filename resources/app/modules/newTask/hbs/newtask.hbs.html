@@ -1,0 +1,40 @@
+<div class="newtask__overlay"></div>
+<div class="newtask__container">
+    <div class="newtask__head">
+        <h3 class="newtask__head-header">
+            Create new Task for project «<span class="newtask__head-project">{{ projectName }}</span>»
+        </h3>
+    </div>
+    <form class="newtask__form" method="POST">
+        <div class="newtask__main">
+            <input type="hidden" name="projectId" value="{{ projectId }}"/>
+            <label class="newtask__form-item">
+                <input type="text" name="taskName" class="newtask__form-input" placeholder="Task title"/>
+                <span class="newtask__form-title">Task title</span>
+            </label>
+            <label class="newtask__form-item">
+                <select name="status" class="newtask__form-input">
+                    {{#each statuses}}
+                        <option value="{{ @index }}">{{ this }}</option>
+                    {{/each}}
+                </select>
+                <span class="newtask__form-title">Task status</span>
+            </label>
+            <label class="newtask__form-item">
+                <textarea name="taskDescription" class="newtask__form-textarea" placeholder="Task description"></textarea>
+            </label>
+        </div>
+
+        <div class="newtask__panel">
+            <button type="button" class="button newtask__button newtask__button_cancel">
+                <i class="fa fa-times"></i>
+                <span>Cancel</span>
+            </button>
+
+            <button type="submit" class="button button_theme_fill-green newtask__button newtask__button_create">
+                <i class="fa fa-plus"></i>
+                <span>Create a task</span>
+            </button>
+        </div>
+    </form>
+</div>

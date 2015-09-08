@@ -1,0 +1,29 @@
+spinner(spinnerSize = 36px)
+    position absolute
+    width spinnerSize
+    height spinnerSize
+    font-size spinnerSize
+    line-height spinnerSize
+
+    left 50%
+    top 50%
+    margin-left: -(spinnerSize / 2)px
+    margin-top: -(spinnerSize / 2)px
+
+    content "\f021"
+    font-family FontAwesome
+    text-align center
+
+    animation spinner 1s infinite linear
+
+
+@keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}

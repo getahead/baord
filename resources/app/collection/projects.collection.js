@@ -1,7 +1,7 @@
 'use strict';
 
-var ProjectModel = require('../model/project.model'),
-    ProjectsCollection;
+var ProjectsCollection,
+    ProjectModel = require('model/project.model');
 
 ProjectsCollection = Backbone.Collection.extend({
     model : ProjectModel,

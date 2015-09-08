@@ -3,11 +3,13 @@ html
     head
         title= title
         link(rel='stylesheet', href='/style/layout.css')
-    body
-        div#header
-            div.projects
+        //script(src='/socket.io/socket.io.js')
+    body.layout
+        div.page
+            div.page__header
 
-        block content
+            div.page__panel
+            div.page__main
+            div.page__popup
 
-        script(src='/js/vendors.js')
         script(src='/js/main.js')

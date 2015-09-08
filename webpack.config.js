@@ -1,5 +1,6 @@
 var webpack = require('webpack'),
     path = require('path'),
+    BowerWebpackPlugin = require('bower-webpack-plugin'),
     handlebars = require('handlebars-loader');
 
 module.exports = {
@@ -19,29 +20,46 @@ module.exports = {
 
     resolve : {
         extensions : ['', '.js'],
-        root       : [path.join(__dirname, "resources/vendor")],
-        alias      : {
-            jquery     : 'jquery/dist/jquery',
-            underscore : 'underscore/underscore',
-            backbone   : 'backbone/backbone',
-            marionette : 'marionette/lib/backbone.marionette'
-        }
+        root       : 'resources/app'
     },
-    module: {
-        loaders: [{ test: /\.hbs.html$/, loader: "handlebars-loader" }]
+    module  : {
+        loaders : [
+            { test : /\.hbs.html$/, loader : "handlebars-loader" }
+        ]
     },
     plugins : [
+        new BowerWebpackPlugin({
+            modulesDirectories              : ["resources/vendor"],
+            manifestFiles                   : "bower.json",
+            includes                        : /.*.js$/,
+            excludes                        : /.*.(css|less|styl)$/,
+            searchResolveModulesDirectories : true
+        }),
+
+        new webpack.optimize.DedupePlugin(),
+
         new webpack.ProvidePlugin({
             $               : "jquery",
-            jQuery          : "jquery",
-            "window.jQuery" : "jquery",
-            "root.jQuery"   : "jquery"
+            jQuery          : 'jquery',
+            'window.jQuery' : 'jquery',
+            'window.$'      : 'jquery'
         }),
+
         new webpack.ProvidePlugin({
-            _ : "underscore"
+            'Backbone' : 'backbone'
         }),
+
+        new webpack.ProvidePlugin({
+            '_' : 'underscore'
+        }),
+
         new webpack.ProvidePlugin({
             Marionette : "marionette"
+        }),
+
+        new webpack.ProvidePlugin({
+            Cookies : "js-cookie"
         })
+
     ]
 }

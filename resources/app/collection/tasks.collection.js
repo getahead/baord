@@ -1,23 +1,20 @@
 'use strict';
 
-var TasksCollection;
+var TasksCollection,
+    TaskModel = require('model/task.model');
 
 TasksCollection = Backbone.Collection.extend({
-    model     : Backbone.Model,
+    model     : TaskModel,
     projectID : '',
-    url       : '/action/tasks',
+    url       : function () {
+        return '/action/tasks/' + this.projectID;
+    },
 
     initialize : function () {
-        this.fetch({reset : true});
-        //        console.log('initialized')
-        //
-        //        this.projectID.on('change', function () {
-        //            this.fetch({reset : true});
-        //        });
-        //
-        //        this.on('sync', function (data) {
-        //            console.log(data);
-        //        })
+        App.projectModel.on('change', function (model) {
+            this.projectID = model.get('_id');
+            this.fetch();
+        }, this);
     }
 });
 

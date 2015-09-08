@@ -1,0 +1,35 @@
+.button
+    display inline-block
+
+    padding 10px 15px
+
+    background-color transparent
+    border: 1px solid $gray.middle
+    border-radius 5px
+
+    color: $gray.dark
+    text-decoration none
+    outline none
+
+    font-size 14px
+
+
+    &:hover
+        background-color: $gray.dark
+        border-color: $colors.dark
+        color: $colors.white
+
+
+    &:active
+        text-shadow: 0 0 5px 0 $colors.white
+
+
+    &_theme
+        &_fill-green
+            color white
+            background-color: $green.light
+            border-color: $green.light
+
+            &:hover
+                background-color: $green.dark
+                border-color: $green.dark

@@ -19,19 +19,20 @@
   "description": "kanban board",
   "main": "bin/www",
   "devDependencies": {
+    "bower-webpack-plugin": "^0.1.8",
     "express-session": "*",
     "grunt": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-cssmin": "*",
-    "grunt-contrib-uglify": "*",
+    "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "*",
     "grunt-webpack": "*",
     "handlebars-loader": "*",
     "matchdep": "*",
     "mongoose": "*",
-    "webpack": "*",
-    "uglify-js": "*"
+    "uglify-js": "*",
+    "webpack": "*"
   },
   "author": "",
   "license": "BSD-2-Clause"

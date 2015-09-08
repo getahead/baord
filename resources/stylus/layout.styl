@@ -1,9 +1,41 @@
+@import "includes/variables"
+@import "includes/utils"
+
 normalize-css()
+
+/*@import iconic*/
+//@import opensans
 
 *
     box-sizing border-box
 
 
+html
 body
+    min-height 100%
+    height 100%
+
+
+.layout
+    position relative
+
     padding 0
     margin 0
+
+    font-family "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+    font-weight 300
+
+    &_drag_active
+        user-select none
+
+
+@import "includes/fa"
+@import "includes/base"
+@import "includes/page"
+@import "includes/button"
+@import "includes/projects"
+@import "includes/tasks"
+@import "includes/task"
+@import "includes/newtask"
+
+

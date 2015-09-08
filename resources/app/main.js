@@ -1,29 +1,40 @@
 'use strict';
+
+// require libs
+
+require('jquery.bem');
+require('jquery.cookie');
+require('backbone.syphon');
+
 /*  That's for Marionette Inspector */
 if (window.__agent) {
     window.__agent.start(Backbone, Marionette);
 }
 
-var App = require('./application/app.application'),
-    AppRouter = require('./routes/app.router'),
-    AppController = require('./controller/app.controller'),
-    ProjectsCollection = require('./collection/projects.collection'),
-    app;
+var App,
+    AppApplication     = require('application/app.application'),
+    AppRouter          = require('routes/app.router'),
+    TasksCollection    = require('collection/tasks.collection'),
+    ProjectsCollection = require('collection/projects.collection'),
+    ProjectModel       = require('model/project.model');
 
 
-app = new App({
-    el         : $('body'),
-    collection : new ProjectsCollection(),
-    projectID  : ''
+App = new AppApplication({
+    el                 : $('body'),
+    appRouter          : new AppRouter(),
+    projectsCollection : new ProjectsCollection(),
+    projectModel       : new ProjectModel()
 });
 
+window.App = App;
 
-app.appRouter = new AppRouter({
-    controller : new AppController({
-        app : app
-    })
-});
+App.tasksCollection = new TasksCollection();
+App.projectsCollection.once('sync', App.start, App);
 
-app.start();
 
-module.exports = app;
+// Require Modules
+
+require('modules/projects/projects');
+require('modules/tasks/tasks');
+require('modules/newtask/newtask');
+require('modules/task/task');

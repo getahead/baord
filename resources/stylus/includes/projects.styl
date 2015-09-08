@@ -1,0 +1,118 @@
+.projects
+    $selectionHeight = 45px
+    $selectionWidth  = 300px
+    clearfix()
+
+    background: $gray.white
+
+
+    &__link
+        float left
+        margin 10px
+
+        color: $colors.black
+        text-decoration none
+
+
+        &:hover &-icon
+            color: $colors.black
+
+        &_back_active &-icon
+            display block
+
+
+        &-icon
+            display none
+            position absolute
+            margin-top 15px
+            color: $gray.middle
+
+            &:before
+                content: "\f053"
+
+
+        &-header
+            font-weight bold
+            padding 5px 0 0 20px
+
+
+        &-description
+            font-size 13px
+            padding-left 20px
+
+
+    &__select
+        display block
+        float right
+        margin 10px
+        size($selectionWidth, $selectionHeight)
+
+        overflow hidden
+
+
+    &__select:hover &__item_current:not(:hover)
+        .fa:before
+            content ''
+
+
+    &__select:hover &__items
+        position absolute
+        z-index 1
+
+
+    &__items
+        width  $selectionWidth
+        background: $gray.light
+        box-shadow 0px 2px 3px  0px rgba(0, 0, 0, 0.5)
+
+
+    &__item
+        display block
+        height $selectionHeight
+        cursor pointer
+
+        &:hover
+            background: $gray.middle
+
+            .fa:before
+                display block
+                content: "\f058"
+
+
+        .fa
+            position absolute
+            margin-left 10px
+
+            line-height $selectionHeight
+
+
+        &_current
+            background: $gray.middle
+            color: $colors.black
+
+            .fa:before
+                display block
+                content: "\f058"
+
+
+        &-header
+            padding 5px 5px 0 30px
+            font-size 14px
+            font-weight bold
+
+            ellipsis()
+
+
+        &-description
+            padding 0 5px 5px 30px
+            font-size 12px
+
+            ellipsis()
+
+
+    &__button
+        margin 13px
+        float right
+
+        .fa
+            font-size 11px
