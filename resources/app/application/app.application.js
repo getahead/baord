@@ -4,7 +4,9 @@ var AppApplication;
 
 AppApplication = Marionette.Application.extend({
     regions : {
-        headerRegion : '.page__header',
+        headerProjectRegion : '.page__header-project',
+        headerUserRegion    : '.page__header-user',
+        notifyRegion : '.page__notifier',
         mainRegion   : '.page__main',
         panelRegion  : '.page__panel',
         popupRegion  : '.page__popup'

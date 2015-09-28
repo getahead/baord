@@ -1,0 +1,101 @@
+.notifier
+    $notifierHeight = 50px
+
+    position fixed
+    z-index 100
+    top 0
+    left 0
+    right 0
+    overflow hidden
+
+    height $notifierHeight
+    padding 0 10px
+    line-height $notifierHeight
+
+    background-color: $yellow.dark
+    color: $gray.dark
+
+
+    &_success
+        background-color: $green.light
+        color: $colors.black
+
+    &_success &__messages-icon:after
+        content '\f05d'
+
+
+    &_error
+        background-color: $red.middle
+
+    &_error &__messages
+        color: $colors.white
+
+    &_error &__messages-icon:after
+        content '\f071'
+
+    &_error &__close
+        color: $colors.white
+
+        .no-touch &:hover
+            background-color rgba(white, 0.1)
+
+
+    &__messages
+        max-width 680px
+        margin 0 auto
+
+        transition 300ms
+
+
+        &-icon
+            float left
+            margin-right 10px
+
+            line-height $notifierHeight
+
+            &:after
+                content '\f05a'
+
+
+        &-item
+            margin-right $notifierHeight
+
+
+        &-text
+            display block
+            height $notifierHeight
+
+            line-height $notifierHeight
+            overflow hidden
+
+            pointer-events none
+
+
+            @media (max-width 620px)
+                display table-cell
+                padding-top 5px
+
+                vertical-align middle
+                line-height ($notifierHeight / 2 - 5)px
+
+                font-size 13px
+
+
+    &__close
+        position absolute
+        z-index 101
+        top 0
+        right 0
+
+        size $notifierHeight
+        line-height  $notifierHeight
+        text-align center
+        font-size 16px
+
+        border-left 1px solid rgba(white, 0.2)
+        cursor pointer
+        color: dark
+
+        .no-touch &:hover
+            background-color rgba(white, 0.1)
+

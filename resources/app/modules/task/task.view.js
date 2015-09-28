@@ -1,7 +1,7 @@
 'use strict';
 
 var TaskView,
-    template = require('./hbs/task.hbs.html');
+    template = require('./templates/task.dot.html');
 
 TaskView = Marionette.ItemView.extend({
     template : template,

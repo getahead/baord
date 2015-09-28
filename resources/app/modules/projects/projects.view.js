@@ -2,7 +2,7 @@
 
 var ProjectsView,
     ProjectsItemView = require('./projects.item.view'),
-    template = require('./hbs/projects.hbs.html');
+    template = require('./templates/projects.dot.html');
 
 ProjectsView = Marionette.CompositeView.extend({
     template           : template,

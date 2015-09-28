@@ -2,7 +2,7 @@
 
 var TasksStatusesCollectionView,
     TasksColView = require('./tasks-col.view'),
-    template = require('./hbs/tasks-table.hbs.html');
+    template = require('./templates/tasks-table.dot.html');
 
 TasksStatusesCollectionView = Marionette.CompositeView.extend({
     template  : template,

@@ -2,21 +2,21 @@
 <div class="newtask__container">
     <div class="newtask__head">
         <h3 class="newtask__head-header">
-            Create new Task for project «<span class="newtask__head-project">{{ projectName }}</span>»
+            Create new Task for project «<span class="newtask__head-project">{{=it.projectName }}</span>»
         </h3>
     </div>
     <form class="newtask__form" method="POST">
         <div class="newtask__main">
-            <input type="hidden" name="projectId" value="{{ projectId }}"/>
+            <input type="hidden" name="projectId" value="{{=it.projectId }}"/>
             <label class="newtask__form-item">
                 <input type="text" name="taskName" class="newtask__form-input" placeholder="Task title"/>
                 <span class="newtask__form-title">Task title</span>
             </label>
             <label class="newtask__form-item">
                 <select name="status" class="newtask__form-input">
-                    {{#each statuses}}
-                        <option value="{{ @index }}">{{ this }}</option>
-                    {{/each}}
+                    {{~it.statuses :value:index}}
+                        <option value="{{=index }}">{{=value}}</option>
+                    {{~}}
                 </select>
                 <span class="newtask__form-title">Task status</span>
             </label>

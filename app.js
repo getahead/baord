@@ -4,11 +4,10 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    stylus = require('stylus'),
-    nib = require('nib'),
     session = require('express-session'),
     routes = require('./routes/index'),
     action = require('./routes/action'),
+    auth = require('./routes/auth'),
     app;
 
 app = express();
@@ -16,22 +15,6 @@ app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-function compile(str, path) {
-    return stylus(str)
-        .set('filename', path)
-        .set('compress', true)
-        .use(nib())
-        .import('nib');
-}
-
-app.use(stylus.middleware({
-        dest   : __dirname + '/public/style',
-        src    : __dirname + '/resources/stylus',
-        prefix : '/style',
-        compile : compile
-    }
-));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -47,7 +30,9 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(require('./resources/lib/middleware/loadUser'));
 app.use('/action', action);
+app.use('/auth', auth);
 app.use('/', routes);
 
 app.use(function(req, res, next) {

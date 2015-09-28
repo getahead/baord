@@ -1,0 +1,174 @@
+.cabinet-user
+    $avatarSize = 100px
+
+    clearfix()
+
+    position relative
+    padding 20px
+
+
+    .no-touch  &:hover &__actions
+        display block
+
+
+    &_state_edit     &__actions-item_cancel
+    &_state_password &__actions-item_cancel
+
+    &_state_edit     &__panel-edit
+    &_state_password &__panel-password
+        display block
+
+
+    &_state_password &__actions-item_edit
+    &_state_password &__actions-item_password
+    &_state_edit     &__actions-item_password
+    &_state_edit     &__actions-item_edit
+
+    &_state_edit     &__panel-info
+    &_state_password &__panel-info
+
+        display none
+
+    &_state_password &__left
+    &_state_edit &__left
+        @media(max-width 380px)
+            float none
+
+
+    &_state_password &__right
+    &_state_edit &__right
+        @media(max-width 380px)
+            margin-left 0
+
+
+    &__left
+        float left
+
+
+    &__right
+        margin-left ($avatarSize + 20)px
+
+
+    &__avatar
+        margin 0 auto
+
+        size $avatarSize
+        background-color: $blue.light
+        border-radius 50%
+
+        text-align center
+
+
+        &-blank
+            line-height $avatarSize
+            color: $colors.white
+
+            font-size 58px
+
+
+    &__username
+        padding-top 20px
+        font-size 24px
+        color: $colors.black
+
+
+        &-login
+            color: $gray.dark
+            font-size 20px
+
+
+    &__info
+        font-size 14px
+        color: $gray.middle
+
+
+        &-item
+            display inline-block
+
+
+    &__actions
+        display none
+        position absolute
+        right 20px
+        top 20px
+
+        text-align right
+
+        .touch &
+            display block
+
+
+        &-item
+            padding 5px 0
+
+
+            &_cancel
+                display none
+
+
+
+        .no-touch &-item:hover &-label
+            display inline-block
+
+
+        &-label
+            display none
+            vertical-align middle
+            font-size 12px
+            color: $gray.middle
+
+
+        &-icon
+            size 24px
+            line-height 24px
+            text-align center
+            vertical-align middle
+
+            font-size 14px
+
+            border-radius 50%
+            background-color: $blue.light
+            color: $blue.middle
+            cursor pointer
+
+            transition 300ms
+
+
+            .no-touch &:hover
+                background-color: $blue.dark
+                color: $colors.white
+
+
+            .touch &
+                size 30px
+                line-height 30px
+
+
+
+    &__panel
+        clearfix()
+
+        paddding-left 15px
+
+
+        &-password
+        &-edit
+            display none
+
+        &-cell
+            float left
+            width 45%
+            min-width 250px
+
+            @media (max-width 680px)
+                width 95%
+
+
+    &__label
+        overflow auto
+        max-width 620px
+
+
+    &__button
+        max-width 620px
+        padding 0 10px

@@ -1,0 +1,22 @@
+<div class="panel-user__items">
+
+    {{? !it.isAuth }}
+    <a href="/login" class="panel-user__item button button_theme_hover_blue">
+        <i class="fa fa-sign-in"></i>
+        <span>Войти</span>
+    </a>
+    <a href="/signup" class="panel-user__item button button_theme_fill-green">
+        <span>Зарегистрироваться</span>
+    </a>
+    {{??}}
+        <a href="/cabinet" class="panel-user__user">
+            <span class="panel-user__user-icon fa fa-user"></span>
+            <span class="panel-user__user-name">{{=it.login}}</span>
+        </a>
+
+        <button class="panel-user__logout button button_theme_hover_blue">
+            <i class="fa fa-sign-out"></i>
+            <span>Выйти</span>
+        </button>
+    {{?}}
+</div>

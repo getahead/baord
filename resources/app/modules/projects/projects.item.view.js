@@ -1,7 +1,7 @@
 'use strict';
 
 var ProjectItemView,
-    template = require('./hbs/project.item.hbs.html');
+    template = require('./templates/project-item.dot.html');
 
 ProjectItemView = Marionette.ItemView.extend({
     template  : template,

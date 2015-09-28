@@ -5,6 +5,7 @@
 require('jquery.bem');
 require('jquery.cookie');
 require('backbone.syphon');
+require('backbone.radio');
 
 /*  That's for Marionette Inspector */
 if (window.__agent) {
@@ -16,14 +17,18 @@ var App,
     AppRouter          = require('routes/app.router'),
     TasksCollection    = require('collection/tasks.collection'),
     ProjectsCollection = require('collection/projects.collection'),
-    ProjectModel       = require('model/project.model');
+    ProjectModel       = require('model/project.model'),
+    UserModel          = require('model/user.model');
 
 
 App = new AppApplication({
     el                 : $('body'),
     appRouter          : new AppRouter(),
     projectsCollection : new ProjectsCollection(),
-    projectModel       : new ProjectModel()
+    projectModel       : new ProjectModel(),
+    userModel          : new UserModel(),
+
+    channel   : Backbone.Radio.channel('app')
 });
 
 window.App = App;
@@ -38,3 +43,8 @@ require('modules/projects/projects');
 require('modules/tasks/tasks');
 require('modules/newtask/newtask');
 require('modules/task/task');
+require('modules/auth/auth');
+require('modules/panel-user/panel-user');
+require('modules/cabinet/cabinet');
+require('modules/notifier/notifier');
+require('modules/notfound/notfound');

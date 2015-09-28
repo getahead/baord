@@ -1,0 +1,29 @@
+<div class="cabinet-inbox__header">Ваши почтовые ящики</div>
+<div class="cabinet-inbox__items"></div>
+<div class="cabinet-inbox__add">
+    <form class="cabinet-inbox__form">
+        <label for="name" class="auth__label cabinet-inbox__label clearfix">
+            <div class="auth__label-field">
+                <i class="fa fa-inbox auth__label-icon"></i>
+                <input id="name"
+                       class="auth__input"
+                       type="text"
+                       name="name"
+                       placeholder="Создать почтовый ящик"/>
+            </div>
+            <div class="auth__label-text">@
+                <select name="domain" class="cabinet-inbox__select">
+                    {{ for(var index in it.allowedDomains) { }}
+                        <option value="{{=it.allowedDomains[index]}}">
+                            {{=it.allowedDomains[index]}}
+                        </option>
+                    {{ } }}
+                </select>
+                <i class="cabinet-inbox__select-icon fa fa-angle-down"></i>
+            </div>
+        </label>
+        <div class="cabinet-inbox__label">
+            <button class="button button_theme_fill-green">Добавить ящик</button>
+        </div>
+    </form>
+</div>

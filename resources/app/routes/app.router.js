@@ -5,12 +5,20 @@ var AppRouter;
 AppRouter = Marionette.AppRouter.extend({
     controller : {
         start : function () {
-            var projectsView = new App.Projects.View({
+            var projectsView,
+                panelUserView;
+
+            projectsView = new App.Projects.View({
                 collection : App.projectsCollection,
                 model      : App.projectModel
             });
 
-            App.headerRegion.show(projectsView);
+            panelUserView = new App.PanelUser.View({
+                model : App.userModel
+            })
+
+            App.headerProjectRegion.show(projectsView);
+            App.headerUserRegion.show(panelUserView);
         },
 
         index : function () {
@@ -35,6 +43,10 @@ AppRouter = Marionette.AppRouter.extend({
             });
 
             App.mainRegion.show(taskView);
+        },
+
+        notfound : function () {
+            App.mainRegion.show(new App.NotFound.View());
         }
     },
 
@@ -44,7 +56,9 @@ AppRouter = Marionette.AppRouter.extend({
 
     appRoutes : {
         '(:projectId)'     : 'index',
-        'task/:taskId'     : 'task'
+        'task/:taskId'     : 'task',
+
+        '*notfound' : 'notfound'
     }
 });
 

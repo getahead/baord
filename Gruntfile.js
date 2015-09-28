@@ -1,5 +1,5 @@
 module.exports = function (grunt) {
-    require("matchdep").filterAll("grunt-*").forEach(grunt.loadNpmTasks);
+    require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 
     var path = require('path'),
         webpack = require('webpack'),
@@ -11,9 +11,9 @@ module.exports = function (grunt) {
             build : {
                 plugins: webpackConfig.plugins.concat(
                     new webpack.DefinePlugin({
-                        "process.env": {
+                        'process.env': {
                             // This has effect on the react lib size
-                            "NODE_ENV": JSON.stringify("production")
+                            'NODE_ENV': JSON.stringify('production')
                         }
                     }),
                     new webpack.optimize.UglifyJsPlugin({
@@ -29,10 +29,26 @@ module.exports = function (grunt) {
                 debug   : true
             }
         },
+        stylus: {
+            compile: {
+                options: {
+                    paths: ['./'],
+                    relativeDest: 'public/style',
+                    urlfunc: 'embedurl',
+                    import: [
+                        'node_modules/nib/index',
+                        'resources/stylus/includes/variables'
+                    ]
+                },
+                files: {
+                    'layout.css': ['resources/stylus/layout.styl', 'resources/app/modules/**/styles/*.styl']
+                }
+            }
+        },
         watch: {
             app: {
-                files: ["public/**/*", "resources/**/*"],
-                tasks: ["webpack:build-dev"],
+                files: ['public/**/*', 'resources/**/*'],
+                tasks: ['webpack:build-dev', 'stylus:compile'],
                 options: {
                     spawn: false
                 }
@@ -40,10 +56,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', []);
-
-    grunt.registerTask("dev", ["webpack:build-dev", "watch:app"]);
+    grunt.registerTask('default', ['webpack:build-dev', 'stylus:compile', 'watch:app']);
 
     // Production build
-    grunt.registerTask("build", ["webpack:build"]);
+    grunt.registerTask('build', ['webpack:build', 'stylus:compile']);
 }

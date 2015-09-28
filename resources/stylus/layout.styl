@@ -1,13 +1,16 @@
-@import "includes/variables"
+@import "includes/normalize"
 @import "includes/utils"
 
-normalize-css()
-
-/*@import iconic*/
-//@import opensans
 
 *
     box-sizing border-box
+    -webkit-tap-highlight-color rgba(0,0,0,0)
+
+a
+    color: $blue.dark
+
+    .no-touch &:hover
+        color: $red.dark
 
 
 html
@@ -33,9 +36,5 @@ body
 @import "includes/base"
 @import "includes/page"
 @import "includes/button"
-@import "includes/projects"
-@import "includes/tasks"
-@import "includes/task"
-@import "includes/newtask"
 
 

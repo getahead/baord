@@ -5,11 +5,7 @@ var ProjectsCollection,
 
 ProjectsCollection = Backbone.Collection.extend({
     model : ProjectModel,
-    url : '/action/projects',
-
-    initialize : function () {
-        this.fetch({reset : true});
-    }
+    url : '/action/projects'
 });
 
 module.exports = ProjectsCollection;

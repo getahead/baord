@@ -1,0 +1,194 @@
+<div class="cabinet-user__left">
+    <div class="cabinet-user__avatar">
+        <div class="cabinet-user__avatar-blank fa fa-user"></div>
+    </div>
+</div>
+<div class="cabinet-user__right">
+    <div class="cabinet-user__panel">
+        <div class="cabinet-user__panel-info">
+            <div class="cabinet-user__username">
+                {{? it.data}}
+                    <span class="cabinet-user__username-name">
+                        {{? it.data.name}}{{=it.data.name}}{{?}}
+                        {{? it.data.surname}}{{=it.data.surname}}{{?}}
+                    </span>
+                {{?}}
+
+                <span class="cabinet-user__username-login">{{=it.login}}</span>
+            </div>
+
+            <div class="cabinet-user__info">
+                {{? it.data}}
+                    {{? it.data.country}}<span class="cabinet-user__info-item">{{=it.data.country}}</span>{{?}}
+                    {{? it.data.city}}<span class="cabinet-user__info-item">{{=it.data.city}}</span>{{?}}
+                    {{? it.data.phone}}<span class="cabinet-user__info-item">{{=it.data.phone}}</span>{{?}}
+                {{?}}
+                <span class="cabinet-user__info-item">{{=it.email}}</span>
+            </div>
+        </div>
+
+        <!-- Редактировать информацию -->
+        <div class="cabinet-user__panel-edit">
+            <form class="cabinet-user__form">
+                <input type="hidden" name="action" value="info"/>
+                <div class="cabinet-user__panel-cell">
+                    <label for="name" class="auth__label cabinet-user__label">
+                        <div class="auth__label-text">Ваше Имя</div>
+                        <div class="auth__label-field">
+                            <i class="fa fa-info auth__label-icon"></i>
+                            <input id="name"
+                                   class="auth__input"
+                                   type="text"
+                                   name="data[name]"
+                                   placeholder="Ваше имя"
+                                   {{? it.data && it.data.name}}
+                                        value="{{=it.data.name}}"
+                                   {{?}} />
+                        </div>
+                    </label>
+
+                    <label for="surname" class="auth__label cabinet-user__label">
+                        <div class="auth__label-text">Фамилия</div>
+                        <div class="auth__label-field">
+                            <i class="fa fa-info auth__label-icon"></i>
+                            <input id="surname"
+                                   class="auth__input"
+                                   type="text"
+                                   name="data[surname]"
+                                   placeholder="Фамилия"
+                                    {{? it.data && it.data.surname}}
+                                        value="{{=it.data.surname}}"
+                                    {{?}} />
+                        </div>
+                    </label>
+
+                    <label for="email" class="auth__label cabinet-user__label">
+                        <div class="auth__label-text">Ваш e-mail</div>
+                        <div class="auth__label-field">
+                            <i class="fa fa-inbox auth__label-icon"></i>
+                            <input id="email"
+                                   class="auth__input"
+                                   type="email"
+                                   name="email"
+                                   required="required"
+                                   value="{{=it.email}}"
+                                   placeholder="Ваш e-mail"/>
+                        </div>
+                    </label>
+                </div>
+                <div class="cabinet-user__panel-cell">
+                    <label for="phone" class="auth__label cabinet-user__label">
+                        <div class="auth__label-text">Ваш телефон</div>
+                        <div class="auth__label-field">
+                            <i class="fa fa-phone auth__label-icon"></i>
+                            <input id="phone"
+                                   class="auth__input"
+                                   type="phone"
+                                   name="data[phone]"
+                                   placeholder="Ваш телефон"
+                                    {{? it.data && it.data.phone}}
+                                        value="{{=it.data.phone}}"
+                                    {{?}} />
+                        </div>
+                    </label>
+
+                    <label for="country" class="auth__label cabinet-user__label">
+                        <div class="auth__label-text">Ваша страна</div>
+                        <div class="auth__label-field">
+                            <i class="fa fa-globe auth__label-icon"></i>
+                            <input id="country"
+                                   class="auth__input"
+                                   type="text"
+                                   name="data[country]"
+                                   placeholder="Страна"
+                                    {{? it.data && it.data.country}}
+                                    value="{{=it.data.country}}"
+                                    {{?}} />
+                        </div>
+                    </label>
+
+                    <label for="city" class="auth__label cabinet-user__label">
+                        <div class="auth__label-text">Ваш город</div>
+                        <div class="auth__label-field">
+                            <i class="fa fa-building-o auth__label-icon"></i>
+                            <input id="city"
+                                   class="auth__input"
+                                   type="text"
+                                   name="data[city]"
+                                   placeholder="Город"
+                                    {{? it.data && it.data.city}}
+                                    value="{{=it.data.city}}"
+                                    {{?}} />
+                        </div>
+                    </label>
+                </div>
+
+                <div class="cabinet-user__button">
+                    <button class="button button_size_fullwidth">Изменить данные</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Изменить пароль -->
+        <div class="cabinet-user__panel-password">
+            <form class="cabinet-user__form">
+                <input type="hidden" name="action" value="password"/>
+                <label for="oldpassword" class="auth__label cabinet-user__label">
+                    <div class="auth__label-text">Ваш текущий пароль</div>
+                    <div class="auth__label-field">
+                        <i class="fa fa-key auth__label-icon"></i>
+                        <input id="oldpassword"
+                               class="auth__input"
+                               type="password"
+                               name="oldpassword"
+                               placeholder="Ваш текущий пароль"
+                               required="required"/>
+                    </div>
+                </label>
+                <label for="newpassword" class="auth__label cabinet-user__label">
+                    <div class="auth__label-text">Новый пароль</div>
+                    <div class="auth__label-field">
+                        <i class="fa fa-key auth__label-icon"></i>
+                        <input id="newpassword"
+                               class="auth__input"
+                               type="password"
+                               name="newpassword"
+                               placeholder="Новый пароль"
+                               required="required"/>
+                    </div>
+                </label>
+                <label for="repeatpassword" class="auth__label cabinet-user__label">
+                    <div class="auth__label-text">Повторите пароль</div>
+                    <div class="auth__label-field">
+                        <i class="fa fa-key auth__label-icon"></i>
+                        <input id="repeatpassword"
+                               class="auth__input"
+                               type="password"
+                               name="repeatpassword"
+                               placeholder="Повторите пароль"
+                               required="required"/>
+                    </div>
+                </label>
+                <div class="cabinet-user__button">
+                    <button class="button button_size_fullwidth">Сменить пароль</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="cabinet-user__actions">
+            <div class="cabinet-user__actions-item cabinet-user__actions-item_cancel">
+                <span class="cabinet-user__actions-label">Отмена</span>
+                <span class="cabinet-user__actions-icon fa fa-times"></span>
+            </div>
+            <div class="cabinet-user__actions-item cabinet-user__actions-item_edit">
+                <span class="cabinet-user__actions-label">Редактировать информацию</span>
+                <span class="cabinet-user__actions-icon fa fa-pencil"></span>
+            </div>
+            <div class="cabinet-user__actions-item cabinet-user__actions-item_password">
+                <span class="cabinet-user__actions-label">Сменить пароль</span>
+                <span class="cabinet-user__actions-icon fa fa-unlock-alt"></span>
+            </div>
+        </div>
+    </div>
+</div>

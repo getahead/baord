@@ -1,0 +1,59 @@
+.cabinet-inbox
+    padding 20px
+
+
+    &__header
+        font-size 26px
+        padding 0 10px
+
+
+    &__items
+        display table
+        padding 10px
+
+
+    &__item
+        display table-row
+
+
+    &__cell
+        display table-cell
+        line-height 30px
+
+
+    &__delete
+        display inline-block
+        margin-right 5px
+
+        font-size 18px
+        color: $red.light
+
+        cursor pointer
+
+        transition 300ms
+
+
+        &:before
+            content '\f056'
+
+
+        .no-touch &:hover
+            color: $red.middle
+
+
+    &__label
+        padding 10px
+
+
+    &__select
+        border none
+        outline none
+        appearance none
+        background-color transparent
+
+        min-width 100px
+
+        &-icon
+            position relative
+            pointer-events none
+            margin-left -20px

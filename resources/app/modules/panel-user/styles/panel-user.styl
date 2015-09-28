@@ -1,0 +1,80 @@
+.panel-user
+    $menuHeight = 40px
+
+
+    &__items
+        float right
+        height $menuHeight
+
+        @media (max-width 620px)
+            float none
+            text-align center
+
+
+    &__main
+        display block
+        float left
+        line-height $menuHeight
+
+        color: $colors.black
+        text-decoration none
+
+        @media (max-width 620px)
+            float none
+            text-align center
+
+
+        &-logo
+            display inline-block
+            margin-right 5px
+            vertical-align middle
+
+            font-size 26px
+            line-height $menuHeight
+
+
+        &-header
+            display inline-block
+            margin 0
+
+            vertical-align middle
+            font-size 20px
+            font-weight normal
+
+
+
+    &__user
+        display inline-block
+        margin 0 5px
+        vertical-align middle
+
+        color: $gray.dark
+        text-decoration none
+
+
+        .no-touch &:hover
+            color: $blue.middle
+
+
+        .no-touch &:hover &-icon
+            color: $blue.middle
+            background-color: $blue.light
+
+
+        &-icon
+            vertical-align middle
+            display inline-block
+            size 30px
+            margin-right 3px
+
+            background: $gray.middle
+            border-radius 50%
+
+            color: $colors.white
+            text-align center
+            line-height 30px
+
+
+        &-name
+            vertical-align middle
+

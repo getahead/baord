@@ -1,0 +1,9 @@
+<div class="notifier__messages">
+    {{ for(var value in it.messages) { }}
+        <div class="notifier__messages-item">
+            <span class="notifier__messages-icon fa"></span>
+            <span class="notifier__messages-text">{{=it.messages[value].message}}</span>
+        </div>
+    {{ } }}
+</div>
+<span class="notifier__close fa fa-times"></span>

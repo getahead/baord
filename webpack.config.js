@@ -1,7 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
     BowerWebpackPlugin = require('bower-webpack-plugin'),
-    handlebars = require('handlebars-loader');
+    doT = require('dot-loader');
 
 module.exports = {
     cache : true,
@@ -24,7 +24,7 @@ module.exports = {
     },
     module  : {
         loaders : [
-            { test : /\.hbs.html$/, loader : "handlebars-loader" }
+            { test : /\.dot.html$/, loader : "dot-loader" }
         ]
     },
     plugins : [

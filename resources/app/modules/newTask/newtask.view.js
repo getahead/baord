@@ -3,7 +3,7 @@
 
 var NewTaskView,
     TaskModel = require('model/task.model'),
-    template = require('./hbs/newtask.hbs.html');
+    template = require('./templates/newtask.dot.html');
 
 NewTaskView = Marionette.ItemView.extend({
     template  : template,
