@@ -35,10 +35,6 @@ NewTaskView = Marionette.ItemView.extend({
         this.listenTo(this.projectModel, 'change', this.render);
     },
 
-    handleClose : function (e) {
-        this.destroy();
-    },
-
     _handleSubmit : function (e) {
         e.preventDefault();
 
@@ -49,7 +45,7 @@ NewTaskView = Marionette.ItemView.extend({
             success : this._requestSuccess.bind(this)
         });
 
-        this.handleClose();
+        this.triggerMethod('handleClose');
 
         return false;
     },

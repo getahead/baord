@@ -10,26 +10,26 @@ ModalBehavior = Marionette.Behavior.extend({
     },
 
     events : {
-        'click  @ui.buttonCancel' : 'handleClose',
+        'click  @ui.buttonCancel' : 'onHandleClose',
         'click  @ui.overlay'      : '_handleOverlayClickClose',
-        'keyup'                : '_handleKeyPressClose'
+        'keyup'                   : '_handleKeyPressClose'
     },
 
     _handleOverlayClickClose : function () {
         if (this.options.disableClickOverlay) return;
 
-        return this.handleClose();
+        return this.onHandleClose();
     },
 
     _handleKeyPressClose : function (e) {
         if (this.options.disableEscapeOverlay) return;
 
         if (e.keyCode == 27) {
-            return this.handleClose();
+            return this.onHandleClose();
         }
     },
 
-    handleClose : function (e) {
+    onHandleClose : function (e) {
         this.view.destroy();
     },
 

@@ -22,6 +22,7 @@
 
 
     &__form
+
         &-item
             display block
             padding 5px 0
@@ -55,3 +56,28 @@
         background-color: $gray.white
 
 
+    &__list
+        display block
+
+
+        &-item
+            margin 3px 0
+
+
+        &-item:last-child &-button:before
+            content '\f067'
+
+
+        &-button
+            font-size 12px
+            padding 8px
+            color: $gray.middle
+            cursor pointer
+
+
+            &:hover
+                color: black
+
+
+            &:before
+                content '\f00d'

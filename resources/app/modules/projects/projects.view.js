@@ -13,8 +13,9 @@ ProjectsView = Marionette.CompositeView.extend({
     emptyView          : ProjectsEmptyView,
 
     events : {
-        'click .projects__button_create' : '_handleNewTask',
-        'click .projects__select-more'   : '_handleExpandList'
+        'click .projects__button_create_task'    : '_handleNewTask',
+        'click .projects__button_create_project' : '_createNewProject',
+        'click .projects__select-more'           : '_handleExpandList'
     },
 
     reorderOnSort : true,
@@ -74,16 +75,17 @@ ProjectsView = Marionette.CompositeView.extend({
 
     _createNewProject : function () {
         var newProjectView = new App.NewProject.View({
-            userModel          : App.userModel,
-            projectsCollection : this.collection
+            userModel  : App.userModel,
+            collection : this.collection
         });
 
         App.popupRegion.show(newProjectView);
     },
 
-    templateHelpers: {
-        showCount: function () {
-            return this.collection.length;
+    templateHelpers: function () {
+
+        return {
+            showCount: (this.collection) ? this.collection.length : 0
         }
     }
 });

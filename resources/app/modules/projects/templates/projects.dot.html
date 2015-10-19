@@ -1,6 +1,6 @@
 <div class="clearfix">
     <div class="projects__select">
-        {{? it && it._id && it.showCount() > 0}}
+        {{? it && it._id && it.showCount > 1}}
         <div class="projects__select-more">
             <span class="projects__select-down fa fa-angle-down"></span>
             <span class="projects__select-up fa fa-angle-up"></span>
@@ -8,11 +8,15 @@
         {{?}}
         <div class="projects__items"></div>
     </div>
+    <button class="button button_theme_light projects__button projects__button_create_project">
+        <i class="fa fa-plus"></i>
+        <span class="button__content">New project</span>
+    </button>
 
 
-        <button class="button projects__button projects__button_create">
+        <button class="button projects__button projects__button_create_task">
             <i class="fa fa-plus"></i>
-            <span>New task</span>
+            <span class="button__content">New task</span>
         </button>
 
 </div>

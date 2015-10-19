@@ -4,19 +4,25 @@ var Projects,
     uniqueValidator = require('mongoose-unique-validator');
 
 ProjectsSchema = new db.Schema({
-    _id                : db.Schema.Types.ObjectId,
     projectCode        : {
         type     : String,
-        required : true
+        required : true,
+        unique   : true,
+        index    : true,
+        uppercase: true,
+        trim     : true
     },
     projectName        : String,
     projectDescription : String,
     url                : String,
     date               : Date,
-    current            : Boolean,
-    projectStatuses    : [String]
+    projectStatuses    : [String],
+    author             : db.Schema.Types.ObjectId,
+    allowedUsers       : [db.Schema.Types.ObjectId],
+    allowedGroups      : [db.Schema.Types.ObjectId]
 });
 
+ProjectsSchema.plugin(uniqueValidator, { message: 'Такой {PATH} уже существует' });
 Projects = db.model('projects', ProjectsSchema);
 
 module.exports = Projects;

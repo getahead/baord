@@ -6,22 +6,33 @@
     </div>
     <form class="newproject__form" method="POST">
         <div class="newproject__main">
-            <input type="hidden" name="projectId" value="{{=it.projectId }}"/>
+            {{? it.user && it.user._id}}
+                <input type="hidden" name="author" value="{{=it.user._id }}"/>
+            {{?}}
+
             <label class="newproject__form-item">
-                <input type="text" name="taskName" class="newproject__form-input" tabindex="1" placeholder="Task title"/>
-                <span class="newproject__form-title">Task title</span>
+                <input type="text" name="projectName" class="newproject__form-input" tabindex="1" placeholder="Project title"/>
+                <span class="newproject__form-title">Project title</span>
             </label>
+
             <label class="newproject__form-item">
-                <select name="status" class="newproject__form-input" tabindex="2">
-                    {{~it.statuses :value:index}}
-                        <option value="{{=index }}">{{=value}}</option>
-                    {{~}}
-                </select>
-                <span class="newproject__form-title">Task status</span>
+                <input type="text" name="projectCode" class="newproject__form-input" tabindex="2" placeholder="Project code"/>
+                <span class="newproject__form-title">Project Code</span>
             </label>
+
             <label class="newproject__form-item">
-                <textarea name="taskDescription" class="newproject__form-textarea" placeholder="Task description"
-                          tabindex="3" ></textarea>
+                <input type="text" name="projectDescription" class="newproject__form-input" tabindex="3" placeholder="Project description"/>
+                <span class="newproject__form-title">Project description</span>
+            </label>
+
+            <label class="newproject__form-item">
+                <span class="newproject__form-title">Project statuses</span>
+                <label class="newproject__list">
+                    <div class="newproject__list-item">
+                        <input type="text" name="projectStatuses[]" class="newproject__form-input" tabindex="4" placeholder="Project status"/>
+                        <span class="fa newproject__list-button"></span>
+                    </div>
+                </label>
             </label>
         </div>
 
@@ -33,7 +44,7 @@
 
             <button type="submit" class="button button_theme_fill-green newproject__button newproject__button_create">
                 <i class="fa fa-plus"></i>
-                <span>Create a task</span>
+                <span>Create Project</span>
             </button>
         </div>
     </form>

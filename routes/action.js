@@ -10,6 +10,31 @@ router.get('/projects', function (req, res, next) {
         res.json(projects);
     });
 });
+router.post('/projects', function (req, res, next) {
+
+    var newProject = new Project({
+        projectName     : req.body.projectName,
+        projectCode     : req.body.projectCode,
+        projectStatuses : req.body.projectStatuses,
+        allowedUsers    : req.body.allowedUsers,
+        allowedGroups   : req.body.allowedGroups,
+        author          : (req.user) ? req.user._id : null,
+        projectDescription : req.body.projectDescription
+    });
+
+    console.log(newProject);
+
+    newProject.save(function(err, project) {
+        if (err) {
+            res.status(400);
+            res.json({error : err});
+            console.log(err);
+            return;
+        }
+
+        res.json(project);
+    });
+});
 
 // TASKS
 
