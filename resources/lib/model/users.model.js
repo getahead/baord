@@ -6,6 +6,7 @@ var UserSchema,
 
 
 UserSchema = new db.Schema({
+    _id       : db.Schema.Types.ObjectId,
     login     : {
         type     : String,
         required : true,
@@ -116,6 +117,7 @@ UserSchema.statics.authorizeBySessionID = function (sessionID, req, callback) {
 
         if (sessionID == thisSessionID) {
             callback(null, {
+                _id   : user._id,
                 login : user.login,
                 data  : user.data,
                 email : user.email,

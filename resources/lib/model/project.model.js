@@ -5,6 +5,10 @@ var Projects,
 
 ProjectsSchema = new db.Schema({
     _id                : db.Schema.Types.ObjectId,
+    projectCode        : {
+        type     : String,
+        required : true
+    },
     projectName        : String,
     projectDescription : String,
     url                : String,

@@ -27,10 +27,16 @@ TasksItemView = Marionette.ItemView.extend({
 
     },
 
+    templateHelpers : function () {
+        return {
+            projectCode   : App.projectModel.get('projectCode')
+        }
+    },
+
     _navigate : function (e) {
         e.preventDefault();
 
-        App.appRouter.navigate('/task/' + this.model.get('_id'), {trigger : true});
+        App.appRouter.navigate($(e.currentTarget).attr('href'), {trigger : true});
     },
 
     _dragstart : function (e) {

@@ -1,8 +1,22 @@
 <div class="task__head">
-    <div class="task__head-header">
-        {{=it.taskName }}
+    <div class="task__value task__head-header">
+        <span class="task__value-item">{{=it.taskName || '' }}</span>
+        <span class="task__act task__act_edit fa fa-pencil"></span>
+        <span class="task__act task__act_cancel fa fa-times"></span>
+        <span class="task__act task__act_save fa fa-check"></span>
     </div>
+    {{? it.project}}
+        <div class="task__value task__head-project">
+            <span class="task__value-item task__value-item_select">{{=it.project.projectName}}</span>
+            <span class="task__act task__act_edit fa fa-pencil"></span>
+            <span class="task__act task__act_cancel fa fa-times"></span>
+            <span class="task__act task__act_save fa fa-check"></span>
+        </div>
+    {{?}}
 </div>
-<div class="task__description">
-    {{=it.taskDescription }}
+<div class="task__value task__description">
+    <span class="task__act task__act fa fa-pencil"></span>
+    <span class="task__act task__act_cancel fa fa-times"></span>
+    <span class="task__act task__act_save fa fa-check"></span>
+    <div class="task__value-item task__value-item_textarea">{{=it.taskDescription || ''}}</div>
 </div>

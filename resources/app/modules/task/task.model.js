@@ -4,7 +4,9 @@ var TaskModel;
 
 TaskModel = Backbone.Model.extend({
     idAttribute: '_id',
-    urlRoot : '/action/task/',
+    url : function () {
+        return '/action/task/' + App.projectModel.get('_id') + '/' + this.get('taskId')
+    },
 
     initialize : function () {
     }

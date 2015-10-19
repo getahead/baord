@@ -5,7 +5,6 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    routes = require('./routes/index'),
     action = require('./routes/action'),
     auth = require('./routes/auth'),
     app;
@@ -33,7 +32,22 @@ app.use(session({
 app.use(require('./resources/lib/middleware/loadUser'));
 app.use('/action', action);
 app.use('/auth', auth);
-app.use('/', routes);
+
+app.get('*', function(req, res) {
+
+    res.sendFile("index.html", {
+        root: __dirname + '/public/html',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent'     : true
+        }
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            res.status(err.status).end();
+        }
+    });
+});
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

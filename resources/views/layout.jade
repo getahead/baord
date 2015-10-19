@@ -3,14 +3,16 @@ html
     head
         meta(charset='utf-8')
         meta(http-equiv='x-ua-compatible', content='ie=edge')
-        title= env
+        title='Agile Kanban board'
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='/style/layout.css')
 
         if env == 'development'
             link(rel='stylesheet', href='/style/plugins.css')
 
+        //script(src='/js/modernizr-custom.js')
         script(src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+
     body.layout
         div.page
             div.page__notifier

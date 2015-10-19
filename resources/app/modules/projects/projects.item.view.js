@@ -12,7 +12,10 @@ ProjectItemView = Marionette.ItemView.extend({
     },
 
     triggers : {
-        'click' : 'project:choose'
+        'click' : {
+            event : 'project:choose',
+            stopPropagation : false
+        }
     },
 
     initialize : function (options) {
@@ -20,6 +23,10 @@ ProjectItemView = Marionette.ItemView.extend({
     },
 
     onRender : function () {
+        this.setCurrent();
+    },
+
+    setCurrent : function () {
         if (this.model.get('current')) {
             this.$el.mod('current', true);
         } else {

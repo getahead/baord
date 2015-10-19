@@ -11,15 +11,6 @@ UserModel = Backbone.Model.extend({
     idAttribute : '_id',
     url         : '/auth/info',
 
-    initialize : function () {
-        this.fetch();
-        this.on('sync', this._handleSyncSuccess, this);
-    },
-
-    _handleSyncSuccess : function () {
-        App.projectsCollection.fetch({reset : true});
-    },
-
     logout : function () {
         $.ajax({
             method : 'post',

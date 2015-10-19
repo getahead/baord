@@ -15,14 +15,16 @@ AppRouter = Marionette.AppRouter.extend({
 
             panelUserView = new App.PanelUser.View({
                 model : App.userModel
-            })
+            });
 
             App.headerProjectRegion.show(projectsView);
             App.headerUserRegion.show(panelUserView);
         },
 
-        index : function () {
+        board : function (projectCode) {
             var tasksView;
+
+            App.projectsCollection.setCurrent(projectCode);
 
             tasksView = new App.Tasks.TasksStatusesCollectionView({
                 model           : App.projectModel,
@@ -32,14 +34,15 @@ AppRouter = Marionette.AppRouter.extend({
             App.mainRegion.show(tasksView);
         },
 
-        task : function (taskId) {
+        task : function (projectId, taskId) {
             var taskView,
-                taskModelAttributes;
+                taskModel;
 
-            taskModelAttributes = _.extend({_id : taskId});
+            App.projectsCollection.setCurrent(projectId);
+            taskModel = new App.Task.TaskModel({taskId : taskId});
 
             taskView = new App.Task.TaskView({
-                model : new  App.Task.TaskModel(taskModelAttributes)
+                model : taskModel
             });
 
             App.mainRegion.show(taskView);
@@ -50,15 +53,21 @@ AppRouter = Marionette.AppRouter.extend({
         }
     },
 
+    initialize : function () {
+
+        this.appRoute(/^browse\/([a-zA-Z]+)?/,      'board');
+        this.appRoute(/^browse\/([a-zA-Z]+)-(\d+)/, 'task');
+    },
+
     start : function () {
         this.controller.start.apply(this);
     },
 
     appRoutes : {
-        '(:projectId)'     : 'index',
-        'task/:taskId'     : 'task',
+        //'(:projectId)'     : 'index',
+        //'task/:taskId'     : 'task',
 
-        '*notfound' : 'notfound'
+        //'*notfound' : 'notfound'
     }
 });
 

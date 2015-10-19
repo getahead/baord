@@ -1,6 +1,5 @@
 {
   "name": "board",
-  "version": "0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -21,17 +20,20 @@
   "devDependencies": {
     "bower-webpack-plugin": "^0.1.8",
     "crypto": "0.0.3",
+    "dot-loader": "^0.1.1",
     "express-session": "*",
     "extend": "^3.0.0",
     "grunt": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jade": "^0.15.0",
     "grunt-contrib-stylus": "^0.22.0",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "*",
+    "grunt-modernizr": "^1.0.0",
+    "grunt-uncss": "^0.4.3",
     "grunt-webpack": "*",
-    "dot-loader": "^0.1.1",
     "matchdep": "*",
     "mongoose": "*",
     "mongoose-unique-validator": "^0.4.1",

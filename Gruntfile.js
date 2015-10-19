@@ -29,26 +29,95 @@ module.exports = function (grunt) {
                 debug   : true
             }
         },
+
         stylus: {
-            compile: {
-                options: {
-                    paths: ['./'],
-                    relativeDest: 'public/style',
-                    urlfunc: 'embedurl',
-                    import: [
-                        'node_modules/nib/index',
-                        'resources/stylus/includes/variables'
-                    ]
-                },
+            options: {
+                paths: ['./'],
+                relativeDest: 'public/style',
+                'include css' : true,
+                urlfunc: 'embedurl',
+                import: [
+                    'node_modules/nib/index',
+                    'resources/stylus/includes/variables'
+                ]
+            },
+            dev: {
                 files: {
-                    'layout.css': ['resources/stylus/layout.styl', 'resources/app/modules/**/styles/*.styl']
+                    'layout.css': [
+                        'resources/stylus/layout.styl',
+                        'resources/app/modules/**/styles/*.styl'
+                    ],
+                    'plugins.css' : ['resources/app/plugins/redactorjs/redactor.styl']
+                }
+            },
+            prod: {
+                files: {
+                    'layout.css': [
+                        'resources/stylus/layout.styl',
+                        'resources/app/modules/**/styles/*.styl',
+                        'resources/app/plugins/redactorjs/redactor.styl'
+                    ]
                 }
             }
         },
+
+        cssmin: {
+            options: {
+                report : ['min', 'gzip']
+            },
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'public/style/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'public/style/'
+                }]
+            }
+        },
+
+        uncss: {
+            dist: {
+                files: {
+                    'dist/css/tidy.css': ['public/html/index.html']
+                }
+            }
+        },
+
+        modernizr: {
+            dist: {
+                //cache : true,
+                dest : "public/js/modernizr-custom.js",
+                matchCommunityTests: true,
+                tests : ['pointerevents', 'touchevents', 'setclasses', 'teststyles', 'domprefixes'],
+
+                uglify: true
+            }
+        },
+
+        jade: {
+            dev: {
+                options: {
+                    data: {
+                        debug: true,
+                        timestamp: "<%= grunt.template.today() %>",
+                        env: 'development'
+                    }
+                },
+                files: {
+                    "public/html/index.html": "resources/views/*.jade"
+                }
+            },
+            prod : {
+                files: {
+                    "public/html/index.html": "resources/views/*.jade"
+                }
+            }
+        },
+
         watch: {
             app: {
                 files: ['public/**/*', 'resources/**/*'],
-                tasks: ['webpack:build-dev', 'stylus:compile'],
+                tasks: ['webpack:build-dev', 'stylus:dev', 'jade:dev'],
                 options: {
                     spawn: false
                 }
@@ -56,8 +125,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['webpack:build-dev', 'stylus:compile', 'watch:app']);
+    grunt.registerTask('default', ['webpack:build-dev', 'stylus:dev', 'jade:dev', 'watch:app']);
 
     // Production build
-    grunt.registerTask('build', ['webpack:build', 'stylus:compile']);
+    grunt.registerTask('build', ['webpack:build', 'stylus:prod', 'jade:prod', 'cssmin']);
 }

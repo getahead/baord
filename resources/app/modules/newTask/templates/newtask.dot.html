@@ -9,11 +9,11 @@
         <div class="newtask__main">
             <input type="hidden" name="projectId" value="{{=it.projectId }}"/>
             <label class="newtask__form-item">
-                <input type="text" name="taskName" class="newtask__form-input" placeholder="Task title"/>
+                <input type="text" name="taskName" class="newtask__form-input" tabindex="1" placeholder="Task title"/>
                 <span class="newtask__form-title">Task title</span>
             </label>
             <label class="newtask__form-item">
-                <select name="status" class="newtask__form-input">
+                <select name="status" class="newtask__form-input" tabindex="2">
                     {{~it.statuses :value:index}}
                         <option value="{{=index }}">{{=value}}</option>
                     {{~}}
@@ -21,7 +21,8 @@
                 <span class="newtask__form-title">Task status</span>
             </label>
             <label class="newtask__form-item">
-                <textarea name="taskDescription" class="newtask__form-textarea" placeholder="Task description"></textarea>
+                <textarea name="taskDescription" class="newtask__form-textarea" placeholder="Task description"
+                          tabindex="3" ></textarea>
             </label>
         </div>
 

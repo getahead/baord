@@ -5,12 +5,13 @@ var Task,
 
 TasksSchema = new db.Schema({
     projectId       : db.Schema.Types.ObjectId,
-    id              : String,
+    taskId          : { type : Number, default : 1, required : true },
     taskName        : String,
     taskDescription : String,
     taskUrl         : String,
     taskDeadline    : Date,
-    status          : { type : Number, default : 0 }
+    status          : { type : Number, default : 0 },
+    author          : db.Schema.Types.ObjectId
 });
 
 Task = db.model('tasks', TasksSchema);

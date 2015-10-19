@@ -6,21 +6,7 @@ var express = require('express'),
 router.get('/projects', function (req, res, next) {
 
     Project.find(function (err, projects) {
-
-        var selectedProject = req.cookies.project || null;
-
-        if (selectedProject) {
-            projects.forEach(function (item) {
-                if (item.id == selectedProject) {
-                    item.current = true;
-                }
-            });
-        }
-        else {
-            projects[0].current = true;
-            res.cookie('project', projects[0].id);
-        }
-
+        if (err) return next(err);
         res.json(projects);
     });
 });
@@ -28,7 +14,7 @@ router.get('/projects', function (req, res, next) {
 // TASKS
 
 router.get('/tasks(/:projectId)?', function (req, res, next) {
-    var projectId = req.params.projectId || req.cookies.project;
+    var projectId = req.params.projectId;
 
     Task.find({projectId : projectId}, function (err, tasks) {
         res.json(tasks);
@@ -39,21 +25,35 @@ router.post('/tasks/:projectId', function (req, res, next) {
     var projectId = req.params.projectId,
         post = req.body;
 
-    var newTask = new Task({
-        taskName        : post.taskName,
-        status          : post.status,
-        projectId       : post.projectId,
-        taskDescription : post.taskDescription
-    });
+    var newTask;
 
-    newTask.save(function(err, task) {
+    Task.find({projectId : projectId}).sort({'taskId' : -1}).limit(1).exec(function (err, task) {
         if (err) {
             res.status(400);
             res.json({error : err});
             return;
         }
 
-        res.json({ _id : task._id});
+        var newId = (task && task[0]&& task[0].taskId) ? task[0].taskId + 1 : 1;
+
+        newTask = new Task({
+            taskId          : newId,
+            taskName        : post.taskName,
+            status          : post.status,
+            projectId       : projectId,
+            taskDescription : post.taskDescription,
+            author          : (req.user) ? req.user._id : null
+        });
+
+        newTask.save(function(err, task) {
+            if (err) {
+                res.status(400);
+                res.json({error : err});
+                return;
+            }
+
+            res.json(task);
+        });
     });
 });
 
@@ -75,10 +75,11 @@ router.patch('/tasks/:projectId/:taskId', function (req, res, next) {
 
 
 
-router.get('/task/:taskId', function (req, res, next) {
-    var taskId = req.params.taskId;
+router.get('/task/:projectId/:taskId', function (req, res, next) {
+    var taskId = req.params.taskId,
+        projectId = req.params.projectId;
 
-    Task.findOne({ _id : taskId}, function (err, task) {
+    Task.findOne({ projectId : projectId,taskId : taskId}, function (err, task) {
         res.json(task);
     });
 });

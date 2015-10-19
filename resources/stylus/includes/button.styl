@@ -11,10 +11,12 @@
     text-decoration none
     outline none
 
+    background-color: $colors.white
+
     font-size 14px
 
 
-    &:hover
+    .no-touch &:hover
         background-color: $gray.dark
         border-color: $colors.dark
         color: $colors.white
@@ -25,11 +27,21 @@
 
 
     &_theme
+        .no-touch &_hover_blue:hover
+            color: $blue.dark
+            background-color: $blue.light
+            border-color: $blue.light
+
         &_fill-green
             color white
             background-color: $green.light
             border-color: $green.light
 
-            &:hover
+            .no-touch &:hover
                 background-color: $green.dark
                 border-color: $green.dark
+
+
+    &_size
+        &_fullwidth
+            width 100%

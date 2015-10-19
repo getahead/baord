@@ -1,8 +1,8 @@
 .projects
     $selectionHeight = 45px
     $selectionWidth  = 300px
-    clearfix()
 
+    clearfix()
     background: $gray.white
 
 
@@ -41,6 +41,24 @@
             padding-left 20px
 
 
+
+    &__select:hover &__item_current:not(:hover)
+        .fa:before
+            content ''
+
+    &__select_expand &__items
+        position absolute
+        z-index 1
+
+
+    &__select_expand &__select-down
+        display none
+
+
+    &__select_expand &__select-up
+        display inline
+
+
     &__select
         display block
         float left
@@ -50,19 +68,26 @@
         overflow hidden
 
 
-    &__select:hover &__item_current:not(:hover)
-        .fa:before
-            content ''
+        &-more
+            float right
+            padding 0 5px
+
+            height $selectionHeight
+            line-height $selectionHeight
+
+            cursor pointer
+
+            &:hover
+                color: $blue.dark
 
 
-    &__select:hover &__items
-        position absolute
-        z-index 1
+        &-up
+            display none
+
 
 
     &__items
         width  $selectionWidth
-        background: $gray.light
         box-shadow 0px 2px 3px  0px rgba(0, 0, 0, 0.5)
 
 
@@ -71,7 +96,10 @@
         height $selectionHeight
         cursor pointer
 
-        &:hover
+        background: $gray.white
+
+
+        &:not(:first-child):hover
             background: $gray.middle
 
             .fa:before
@@ -86,13 +114,15 @@
             line-height $selectionHeight
 
 
-        &_current
-            background: $gray.middle
+        &:first-child
+            background transparent
             color: $colors.black
 
+
+        &:first-child&_back_active
             .fa:before
                 display block
-                content: "\f058"
+                content: "\f053"
 
 
         &-header

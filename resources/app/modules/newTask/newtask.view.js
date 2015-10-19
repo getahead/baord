@@ -12,12 +12,13 @@ NewTaskView = Marionette.ItemView.extend({
     ui : {
         'buttonCancel' : '.newtask__button_cancel',
         'buttonCreate' : '.newtask__button_create',
-        'form'         : '.newtask__form'
+        'form'         : '.newtask__form',
+        'textarea'     : '.newtask__form-textarea'
     },
 
     events : {
-        'click .newtask__overlay, @ui.buttonCancel' : 'handleClose',
-        'submit @ui.form'                           : '_handleSubmit'
+        'click  @ui.buttonCancel' : 'handleClose',
+        'submit @ui.form'         : '_handleSubmit'
     },
 
     initialize : function (options) {
@@ -37,10 +38,10 @@ NewTaskView = Marionette.ItemView.extend({
         e.preventDefault();
 
         var data = Backbone.Syphon.serialize(this.ui.form);
-        this.model.set(data);
-        this.collection.create(this.model, {
-            wait: true,
-            success : this._requestSuccess
+
+        this.collection.create(data, {
+            wait    : true,
+            success : this._requestSuccess.bind(this)
         });
 
         this.handleClose();
@@ -49,7 +50,7 @@ NewTaskView = Marionette.ItemView.extend({
     },
 
     _requestSuccess : function (model, res) {
-
+        this.model.set(res);
     },
 
     templateHelpers : function () {
@@ -58,7 +59,18 @@ NewTaskView = Marionette.ItemView.extend({
             projectName : this.projectModel.get('projectName'),
             statuses    : this.projectModel.get('projectStatuses')
         }
+    },
+
+    onShow : function () {
+        $('.newtask__form-input:first', this.$el).focus();
+    },
+
+    onRender : function () {
+        if ($.fn.redactor) {
+            this.ui.textarea.redactor();
+        }
     }
+
 });
 
 

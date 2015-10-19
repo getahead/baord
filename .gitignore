@@ -1,7 +1,6 @@
 .idea
-.bowerrc
 public/js
+public/style
+public/html
 node_modules
 resources/vendor
-test
-tests

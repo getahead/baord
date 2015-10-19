@@ -18,14 +18,6 @@ AppApplication = Marionette.Application.extend({
 
             this.appRouter.start();
         }, this);
-
-        this.projectsCollection.on('sync', this._setProjectModel, this);
-    },
-
-    _setProjectModel : function (collection) {
-        var model = collection.findWhere({ current : true}) || collection.at(0);
-
-        this.projectModel.set(model.toJSON());
     }
 });
 

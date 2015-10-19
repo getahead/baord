@@ -1,3 +1,60 @@
 .task
     height 100%
     min-height 100%
+
+
+    &__head
+        padding 20px
+
+        &-header
+            font-size 20px
+
+        &-project
+            font-size 14px
+            color: $gray.middle
+
+
+    &__act
+        display inline-block
+
+        size 20px
+        line-height 20px
+        text-align center
+        vertical-align middle
+
+        font-size 12px
+
+        border-radius 50%
+        background-color: $blue.light
+        color: $blue.middle
+        cursor pointer
+
+        transition 300ms
+
+
+        .no-touch &:hover
+            background-color: $blue.dark
+            color: $colors.white
+
+
+        .touch &
+            size 30px
+            line-height 30px
+
+
+        &_cancel
+        &_save
+            display none
+
+
+    &__value_state_edit &__act_cancel
+    &__value_state_edit &__act_save
+        display inline-block
+
+
+    &__value_state_edit &__act_edit
+        display none
+
+
+    &__value
+        display block

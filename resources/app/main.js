@@ -2,10 +2,12 @@
 
 // require libs
 
-require('jquery.bem');
-require('jquery.cookie');
-require('backbone.syphon');
-require('backbone.radio');
+    require('jquery.bem');
+    require('jquery.cookie');
+    require('backbone.syphon');
+    require('backbone.radio');
+
+    require('plugins/redactorjs/redactor');
 
 /*  That's for Marionette Inspector */
 if (window.__agent) {
@@ -22,18 +24,24 @@ var App,
 
 
 App = new AppApplication({
-    el                 : $('body'),
-    appRouter          : new AppRouter(),
-    projectsCollection : new ProjectsCollection(),
-    projectModel       : new ProjectModel(),
-    userModel          : new UserModel(),
+    el      : $('body'),
+    channel : Backbone.Radio.channel('app'),
 
-    channel   : Backbone.Radio.channel('app')
+    appRouter : new AppRouter()
 });
 
 window.App = App;
 
-App.tasksCollection = new TasksCollection();
+App.projectModel       = new ProjectModel();
+App.projectsCollection = new ProjectsCollection();
+App.tasksCollection    = new TasksCollection();
+
+App.userModel = new UserModel();
+App.userModel.fetch();
+
+App.userModel.on('sync', function () {
+    App.projectsCollection.fetch();
+});
 App.projectsCollection.once('sync', App.start, App);
 
 
