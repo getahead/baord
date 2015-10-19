@@ -27,8 +27,14 @@ App = new AppApplication({
     el      : $('body'),
     channel : Backbone.Radio.channel('app'),
 
-    appRouter : new AppRouter()
+    appRouter : new AppRouter(),
+    Behaviors : {}
 });
+
+Marionette.Behaviors.behaviorsLookup = function() {
+    return App.Behaviors;
+};
+
 
 window.App = App;
 
@@ -45,11 +51,15 @@ App.userModel.on('sync', function () {
 App.projectsCollection.once('sync', App.start, App);
 
 
+// Behaviors
+App.Behaviors.ModalBehavior = require('behaviors/modal/modal.behavior');
+
 // Require Modules
 
 require('modules/projects/projects');
 require('modules/tasks/tasks');
 require('modules/newtask/newtask');
+require('modules/newproject/newproject');
 require('modules/task/task');
 require('modules/auth/auth');
 require('modules/panel-user/panel-user');

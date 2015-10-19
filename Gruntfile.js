@@ -45,6 +45,7 @@ module.exports = function (grunt) {
                 files: {
                     'layout.css': [
                         'resources/stylus/layout.styl',
+                        'resources/app/behaviors/**/styles/*.styl',
                         'resources/app/modules/**/styles/*.styl'
                     ],
                     'plugins.css' : ['resources/app/plugins/redactorjs/redactor.styl']
@@ -54,6 +55,7 @@ module.exports = function (grunt) {
                 files: {
                     'layout.css': [
                         'resources/stylus/layout.styl',
+                        'resources/app/behaviors/**/styles/*.styl',
                         'resources/app/modules/**/styles/*.styl',
                         'resources/app/plugins/redactorjs/redactor.styl'
                     ]

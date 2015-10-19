@@ -17,13 +17,18 @@ NewTaskView = Marionette.ItemView.extend({
     },
 
     events : {
-        'click  @ui.buttonCancel' : 'handleClose',
         'submit @ui.form'         : '_handleSubmit'
+    },
+
+    behaviors : {
+        ModalBehavior : {
+            disableClickOverlay  : true,
+            disableEscapeOverlay : true
+        }
     },
 
     initialize : function (options) {
         this.model = new TaskModel();
-
         this.projectModel = options.projectModel;
         this.projectsCollection = options.projectsCollection;
 

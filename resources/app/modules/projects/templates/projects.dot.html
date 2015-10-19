@@ -1,14 +1,18 @@
 <div class="clearfix">
     <div class="projects__select">
+        {{? it && it._id && it.showCount() > 0}}
         <div class="projects__select-more">
             <span class="projects__select-down fa fa-angle-down"></span>
             <span class="projects__select-up fa fa-angle-up"></span>
         </div>
+        {{?}}
         <div class="projects__items"></div>
     </div>
 
-    <button class="button projects__button projects__button_create">
-        <i class="fa fa-plus"></i>
-        <span>New task</span>
-    </button>
+
+        <button class="button projects__button projects__button_create">
+            <i class="fa fa-plus"></i>
+            <span>New task</span>
+        </button>
+
 </div>
