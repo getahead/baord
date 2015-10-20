@@ -8,23 +8,23 @@ AuthModel = Backbone.Model.extend({
         inboxDomain : App.domain,
         actions : {
             login : {
-                title : 'Войти',
-                buttonTitle : 'Войти',
+                title : i18n.t('auth.signin'),
+                buttonTitle : i18n.t('auth.input.button_signin'),
                 required : ['login', 'password']
             },
             registration : {
-                title : 'Зарегистрироваться',
-                buttonTitle : 'Создать аккаунт',
+                title : i18n.t('auth.signup'),
+                buttonTitle : i18n.t('auth.input.button_signup'),
                 required : ['login', 'email', 'password', 'conditions']
             },
             forgot : {
-                title : 'Забыли пароль',
-                buttonTitle : 'Сбросить пароль',
+                title : i18n.t('auth.forgot'),
+                buttonTitle : i18n.t('auth.input.button_forgot'),
                 required : ['email']
             },
             restore : {
-                title : 'Установите новый пароль',
-                buttonTitle : 'Установить новый пароль',
+                title : i18n.t('auth.setnewpassword'),
+                buttonTitle : i18n.t('auth.input.button_setnewpassword'),
                 required    : ['password', 'repeatpassword']
             }
         }
@@ -41,18 +41,18 @@ AuthModel = Backbone.Model.extend({
         for (var i = 0; i < required.length; i++) {
             var attr = required[i];
             if (!attrs[attr]) {
-                errors[attr] = {message : 'Поле <strong>' + attr + '</strong> обязательно'}
+                errors[attr] = {message : i18n.t('auth.message.required_field', {field : attr,  escapeInterpolation: false})}
             }
         }
 
         if (attrs.action == 'restore') {
             if (attrs.password !== attrs.repeatpassword) {
-                errors['repeatpassword'] = {message : 'Вы неверно повторили пароль'}
+                errors['repeatpassword'] = {message : i18n.t('auth.message.wrong_password_repeat')}
             }
         }
 
         if (attrs.email && !this.validateEmail(attrs.email)) {
-            errors['email'] = {message : 'Поле <strong>E-MAIL</strong> заполнено некорректно'}
+            errors['email'] = {message : i18n.t('auth.message.wrong_field', {field : 'E-MAIL',  escapeInterpolation: false})}
         }
 
         if (!_.isEmpty(errors)) {

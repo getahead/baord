@@ -34,6 +34,7 @@
     "grunt-modernizr": "^1.0.0",
     "grunt-uncss": "^0.4.3",
     "grunt-webpack": "*",
+    "json-loader": "^0.5.3",
     "matchdep": "*",
     "mongoose": "*",
     "mongoose-unique-validator": "^0.4.1",
