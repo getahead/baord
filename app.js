@@ -7,7 +7,11 @@ var express = require('express'),
     session = require('express-session'),
     action = require('./routes/action'),
     auth = require('./routes/auth'),
+    i18n = require("i18next"),
+    translates = require('./resources/locales/en.json'),
     app;
+
+i18n.init({ lng: "en-US", resources : translates });
 
 app = express();
 
@@ -30,6 +34,7 @@ app.use(session({
 }));
 
 app.use(require('./resources/lib/middleware/loadUser'));
+app.use(i18n.handle);
 app.use('/action', action);
 app.use('/auth', auth);
 
