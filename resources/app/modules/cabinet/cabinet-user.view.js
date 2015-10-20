@@ -51,7 +51,7 @@ CabinetUserView = Marionette.ItemView.extend({
             name : 'Data changed',
             messages  : {
                 fields : {
-                    message : 'Данные успешно изменены'
+                    message : i18n.t('auth.message.profile_info_changed')
                 }
             }
         });

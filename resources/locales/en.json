@@ -25,14 +25,18 @@
                     "status": "Task status",
                     "description"  : "Project description",
                     "button_create": "Create new Project"
+                },
+                "message" : {
+                    "project_created" : "Project <strong>__project__</strong> has just created and it has an ID __code__"
                 }
             },
 
             "auth" : {
                 "forgot" : "Forgot password",
-                "signin" : "Sign In",
-                "signup" : "Sign Up",
-                "setnewpassword" : "Set new password",
+                "sign_in" : "Sign In",
+                "sign_up" : "Sign Up",
+                "sign_out" : "Sign Out",
+                "password_new_set" : "Set new password",
                 "input" : {
                     "surname_label" : "Your surname",
                     "surname" : "Surname",
@@ -60,26 +64,35 @@
                     "email" : "E-Mail",
                     "conditions" : "I accept __open__ license agreement __close__",
                     "remember" : "Remember me",
-                    "button_signin" : "Sign In",
-                    "button_signup" : "Sign Up",
+                    "button_sign_in" : "Sign In",
+                    "button_sign_up" : "Sign Up",
                     "button_forgot" : "Reset my password",
                     "button_password_change" : "Change password",
                     "button_change" : "Change profile info",
-                    "button_setnewpassword" : "Set new password"
+                    "button_password_new_set" : "Set new password"
                 },
                 "message" : {
                     "wrong_password_repeat" : "Repeat your password correctly",
                     "wrong_field" : "Value for field <strong>__field__</strong> is incorrect",
-                    "required_field" : "Field <strong>__field__</strong> is required"
+                    "required_field" : "Field <strong>__field__</strong> is required",
+                    "profile_info_changed" : "Profile info successfully changed"
                 },
                 "restore" : {
                     "email_sent" : "На E-MAIL __email__ отправлено письмо",
                     "email_instructions" : "Follow the instructions to reset your password"
+                },
+
+                "cabinet" : {
+                    "profile_edit" : "Edit profile",
+                    "profile_password_change" : "Change my password"
                 }
             },
 
             "basic" : {
-                "cancel" : "Cancel"
+                "cancel" : "Cancel",
+                "message" : {
+                    "unexpected_error" : "Unexpected error. Please, try again later"
+                }
             },
 
             "special" : {

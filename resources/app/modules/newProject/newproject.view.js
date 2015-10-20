@@ -87,8 +87,11 @@ NewProjectView = Marionette.ItemView.extend({
             name : 'Data changed',
             messages  : {
                 fields : {
-                    message : 'Project <strong>' + model.get('projectName') +'</strong> ' +
-                    'has just created and it has an ID ' + model.get('projectCode') + '. We wish you a greate work.'
+                    message : i18n.t('newproject.message.project_created', {
+                        escapeInterpolation: false,
+                        project : model.get('projectName'),
+                        code : model.get('projectCode')
+                    })
                 }
             }
         });

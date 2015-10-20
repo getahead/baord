@@ -42,7 +42,7 @@ ProjectsCollection = Backbone.Collection.extend({
                 type : 'error',
                 messages  : {
                     notFound : {
-                        message : 'Ошибка сервера. Попробуйте позже'
+                        message : i18n.t('basic.message.unexpected_error')
                     }
                 }
             });

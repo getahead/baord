@@ -8,13 +8,13 @@ AuthModel = Backbone.Model.extend({
         inboxDomain : App.domain,
         actions : {
             login : {
-                title : i18n.t('auth.signin'),
-                buttonTitle : i18n.t('auth.input.button_signin'),
+                title : i18n.t('auth.sign_in'),
+                buttonTitle : i18n.t('auth.input.button_sign_in'),
                 required : ['login', 'password']
             },
             registration : {
-                title : i18n.t('auth.signup'),
-                buttonTitle : i18n.t('auth.input.button_signup'),
+                title : i18n.t('auth.sign_up'),
+                buttonTitle : i18n.t('auth.input.button_sign_up'),
                 required : ['login', 'email', 'password', 'conditions']
             },
             forgot : {
@@ -23,8 +23,8 @@ AuthModel = Backbone.Model.extend({
                 required : ['email']
             },
             restore : {
-                title : i18n.t('auth.setnewpassword'),
-                buttonTitle : i18n.t('auth.input.button_setnewpassword'),
+                title : i18n.t('auth.password_new_set'),
+                buttonTitle : i18n.t('auth.input.button_password_new_set'),
                 required    : ['password', 'repeatpassword']
             }
         }
