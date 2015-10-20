@@ -9,10 +9,6 @@
 
     require('plugins/redactorjs/redactor');
 
-/*  That's for Marionette Inspector */
-if (window.__agent) {
-    window.__agent.start(Backbone, Marionette);
-}
 
 var App,
     AppApplication     = require('application/app.application'),
@@ -20,8 +16,14 @@ var App,
     TasksCollection    = require('collection/tasks.collection'),
     ProjectsCollection = require('collection/projects.collection'),
     ProjectModel       = require('model/project.model'),
-    UserModel          = require('model/user.model');
+    UserModel          = require('model/user.model'),
+    translations       = require('json!../locales/en.json');
 
+
+i18n.init({
+    lng      : 'en-US',
+    resStore : translations
+});
 
 App = new AppApplication({
     el      : $('body'),

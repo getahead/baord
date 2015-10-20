@@ -59,6 +59,10 @@ module.exports = {
 
         new webpack.ProvidePlugin({
             Cookies : "js-cookie"
+        }),
+
+        new webpack.ProvidePlugin({
+            i18n : "i18next"
         })
 
     ]

@@ -48,8 +48,8 @@ AuthView = Marionette.ItemView.extend({
                 waitForClose : true,
                 name : 'E-MAIL sent',
                 messages  : {
-                    success : {message : 'На E-MAIL ' + model.get('email') + ' отправлено письмо'},
-                    todo    : {message : 'Следуйте инструкциям из письма, чтобы восстановить пароль'}
+                    success : {message : i18n.t('auth.restore.email_sent', {email : model.get('email')})},
+                    todo    : {message : i18n.t('auth.restore.email_instructions')}
                 }
             });
 

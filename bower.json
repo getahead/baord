@@ -13,16 +13,17 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
-    "underscore": "~1.8.3",
     "backbone": "~1.2.1",
-    "marionette": "~2.4.2",
-    "handlebars": "~3.0.3",
     "backbone.radio": "~1.0.0",
-    "jquery.bem": "https://github.com/zenwalker/jquery-bem.git",
-    "js-cookie": "~2.0.3",
-    "jquery.cookie": "~1.4.1",
+    "backbone.syphon": "~0.6.2",
     "font-awesome": "~4.4.0",
-    "backbone.syphon": "~0.6.2"
+    "handlebars": "~3.0.3",
+    "i18next": "~1.10.3",
+    "jquery": "~2.1.4",
+    "jquery.bem": "https://github.com/zenwalker/jquery-bem.git",
+    "jquery.cookie": "~1.4.1",
+    "js-cookie": "~2.0.3",
+    "marionette": "~2.4.2",
+    "underscore": "~1.8.3"
   }
 }

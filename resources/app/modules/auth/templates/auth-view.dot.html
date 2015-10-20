@@ -10,42 +10,42 @@
         {{? it.action !== 'forgot'}}
             {{? it.action !== 'restore'}}
                 <label for="login" class="auth__label clearfix">
-                    <div class="auth__label-text">Ваш логин в системе</div>
+                    <div class="auth__label-text">{{= i18n.t('auth.input.login_label')}}</div>
                     <div class="auth__label-field">
                         <i class="fa fa-user auth__label-icon"></i>
                         <input id="login"
                                class="auth__input"
                                type="text"
                                name="login"
-                               placeholder="Логин"
+                               placeholder="{{= i18n.t('auth.input.login')}}"
                                required="required"/>
                     </div>
                 </label>
             {{?}}
 
             <label for="password" class="auth__label clearfix">
-                <div class="auth__label-text">Ваш пароль</div>
+                <div class="auth__label-text">{{= i18n.t('auth.input.password_label')}}</div>
                 <div class="auth__label-field">
                     <i class="fa fa-key auth__label-icon"></i>
                     <input id="password"
                            class="auth__input"
                            type="password"
                            name="password"
-                           placeholder="Пароль"
+                           placeholder="{{= i18n.t('auth.input.password')}}"
                            required="required"/>
                 </div>
             </label>
 
             {{? it.action === 'restore'}}
                 <label for="repeatpassword" class="auth__label clearfix">
-                    <div class="auth__label-text">Повторите пароль</div>
+                    <div class="auth__label-text">{{= i18n.t('auth.input.password_repeat_label')}}</div>
                     <div class="auth__label-field">
                         <i class="fa fa-key auth__label-icon"></i>
                         <input id="repeatpassword"
                                class="auth__input"
                                type="password"
                                name="repeatpassword"
-                               placeholder="Повторите пароль"
+                               placeholder="{{= i18n.t('auth.input.password_repeat')}}"
                                required="required"/>
                     </div>
                 </label>
@@ -54,14 +54,14 @@
 
         {{? it.action === 'registration' || it.action === 'forgot'}}
             <label for="email" class="auth__label clearfix">
-                <div class="auth__label-text">Ваш существующий e-mail</div>
+                <div class="auth__label-text">{{= i18n.t('auth.input.email_label')}}</div>
                 <div class="auth__label-field">
                     <i class="fa fa-inbox auth__label-icon"></i>
                     <input id="email"
                            class="auth__input"
                            type="email"
                            name="email"
-                           placeholder="Ваш почтовый ящик"
+                           placeholder="{{= i18n.t('auth.input.email')}}"
                            required="required"/>
                 </div>
             </label>
@@ -72,10 +72,13 @@
                            type="checkbox"
                            name="conditions"
                            required="required"/>
-                    <span>Я принимаю
-                        <a class="auth__link" href="/conditions">
-                            условия пользования сервисом
-                        </a>
+                    <span>
+                        {{= i18n.t('auth.input.conditions', {
+                                escapeInterpolation: false,
+                                open  : '<a class="auth__link" href="/conditions">',
+                                close : '</a>'
+                            })
+                        }}
                     </span>
                 </label>
             {{?}}
@@ -83,7 +86,7 @@
         {{?? it.action === 'login'}}
             <label for="remember" class="auth__label">
                 <input id="remember" type="checkbox" name="remember"/>
-                <span>Запомнить меня</span>
+                <span>{{= i18n.t('auth.input.remember')}}</span>
             </label>
         {{?}}
 
@@ -95,9 +98,9 @@
 
         <div class="auth__label auth__label_center">
             {{? it.action === 'login'}}
-                <a class="auth__link" href="/login/forgot">Забыли пароль</a>
+                <a class="auth__link" href="/login/forgot">{{= i18n.t('auth.forgot')}}</a>
             {{??}}
-                <a class="auth__link" href="/login">Войти</a>
+                <a class="auth__link" href="/login">{{= i18n.t('auth.sign_in')}}</a>
             {{?}}
         </div>
     </form>

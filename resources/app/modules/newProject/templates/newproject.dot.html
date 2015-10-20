@@ -1,7 +1,7 @@
 <div class="newproject__container">
     <div class="newproject__head">
         <h3 class="newproject__head-header">
-            Create a new Project
+            {{= i18n.t('newproject.header')}}
         </h3>
     </div>
     <form class="newproject__form" method="POST">
@@ -11,25 +11,33 @@
             {{?}}
 
             <label class="newproject__form-item">
-                <input type="text" name="projectName" class="newproject__form-input" tabindex="1" placeholder="Project title"/>
-                <span class="newproject__form-title">Project title</span>
+                <input type="text" name="projectName" class="newproject__form-input" tabindex="1" placeholder="{{= i18n.t('newproject.input.title')}}"/>
+                <span class="newproject__form-title">{{= i18n.t('newproject.input.title')}}</span>
             </label>
 
             <label class="newproject__form-item">
-                <input type="text" name="projectCode" class="newproject__form-input" tabindex="2" placeholder="Project code"/>
-                <span class="newproject__form-title">Project Code</span>
+                <input type="text" name="projectCode" class="newproject__form-input" tabindex="2" placeholder="{{= i18n.t('newproject.input.code')}}"/>
+                <span class="newproject__form-title">{{= i18n.t('newproject.input.code')}}</span>
             </label>
 
             <label class="newproject__form-item">
-                <input type="text" name="projectDescription" class="newproject__form-input" tabindex="3" placeholder="Project description"/>
-                <span class="newproject__form-title">Project description</span>
+                <input type="text"
+                       name="projectDescription"
+                       class="newproject__form-input"
+                       tabindex="3"
+                       placeholder="{{= i18n.t('newproject.input.description')}}"/>
+                <span class="newproject__form-title">{{= i18n.t('newproject.input.description')}}</span>
             </label>
 
             <label class="newproject__form-item">
-                <span class="newproject__form-title">Project statuses</span>
+                <span class="newproject__form-title">{{= i18n.t('newproject.input.statuses')}}</span>
                 <label class="newproject__list">
                     <div class="newproject__list-item">
-                        <input type="text" name="projectStatuses[]" class="newproject__form-input" tabindex="4" placeholder="Project status"/>
+                        <input type="text"
+                               name="projectStatuses[]"
+                               class="newproject__form-input"
+                               tabindex="4"
+                               placeholder="{{= i18n.t('newproject.input.status')}}"/>
                         <span class="fa newproject__list-button"></span>
                     </div>
                 </label>
@@ -39,12 +47,12 @@
         <div class="newproject__panel">
             <button type="button" class="button newproject__button newproject__button_cancel">
                 <i class="fa fa-times"></i>
-                <span>Cancel</span>
+                <span>{{= i18n.t('basic.cancel')}}</span>
             </button>
 
             <button type="submit" class="button button_theme_fill-green newproject__button newproject__button_create">
                 <i class="fa fa-plus"></i>
-                <span>Create Project</span>
+                <span>{{= i18n.t('newproject.input.button_create')}}</span>
             </button>
         </div>
     </form>

@@ -5,6 +5,7 @@ var express = require('express'),
     User = require('../resources/lib/model/users.model');
 
 router.get('/info', function (req, res, next) {
+    console.log(req.i18n.t('special.notfound'));
 
     res.send(extend({
         isAuth : (req.user) ? true : false

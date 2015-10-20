@@ -1,15 +1,19 @@
 <div class="newtask__container">
     <div class="newtask__head">
         <h3 class="newtask__head-header">
-            Create new Task for project «<span class="newtask__head-project">{{=it.projectName }}</span>»
+            {{= i18n.t('newtask.header')}} «<span class="newtask__head-project">{{=it.projectName }}</span>»
         </h3>
     </div>
     <form class="newtask__form" method="POST">
         <div class="newtask__main">
             <input type="hidden" name="projectId" value="{{=it.projectId }}"/>
             <label class="newtask__form-item">
-                <input type="text" name="taskName" class="newtask__form-input" tabindex="1" placeholder="Task title"/>
-                <span class="newtask__form-title">Task title</span>
+                <input type="text"
+                       name="taskName"
+                       class="newtask__form-input"
+                       tabindex="1"
+                       placeholder="{{= i18n.t('newtask.input.title')}}"/>
+                <span class="newtask__form-title">{{= i18n.t('newtask.input.title')}}</span>
             </label>
             <label class="newtask__form-item">
                 <select name="status" class="newtask__form-input" tabindex="2">
@@ -17,10 +21,12 @@
                         <option value="{{=index }}">{{=value}}</option>
                     {{~}}
                 </select>
-                <span class="newtask__form-title">Task status</span>
+                <span class="newtask__form-title">{{= i18n.t('newtask.input.status')}}</span>
             </label>
             <label class="newtask__form-item">
-                <textarea name="taskDescription" class="newtask__form-textarea" placeholder="Task description"
+                <textarea name="taskDescription"
+                          class="newtask__form-textarea"
+                          placeholder="{{= i18n.t('newtask.input.description')}}"
                           tabindex="3" ></textarea>
             </label>
         </div>
@@ -28,12 +34,12 @@
         <div class="newtask__panel">
             <button type="button" class="button newtask__button newtask__button_cancel">
                 <i class="fa fa-times"></i>
-                <span>Cancel</span>
+                <span>{{= i18n.t('basic.cancel')}}</span>
             </button>
 
             <button type="submit" class="button button_theme_fill-green newtask__button newtask__button_create">
                 <i class="fa fa-plus"></i>
-                <span>Create a task</span>
+                <span>{{= i18n.t('newtask.input.button_create')}}</span>
             </button>
         </div>
     </form>

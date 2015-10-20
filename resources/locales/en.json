@@ -1,0 +1,109 @@
+{
+    "en-US": {
+        "translation": {
+            "projects" : {
+                "button_new_task"    : "New task",
+                "button_new_project" : "New project",
+                "noprojects__header" : "You have no projects yet",
+                "noprojects__text"   : "Create new or join an existing project"
+            },
+            "newtask" : {
+                "header" : "Create new Task for project",
+                "input" : {
+                    "title" : "Task title",
+                    "status": "Task status",
+                    "description"  : "Task description",
+                    "button_create": "Create a task"
+                }
+            },
+            "newproject" : {
+                "header" : "Create a new Project",
+                "input" : {
+                    "title" : "Project title",
+                    "code": "Project Code",
+                    "statuses": "Project statuses",
+                    "status": "Task status",
+                    "description"  : "Project description",
+                    "button_create": "Create new Project"
+                },
+                "message" : {
+                    "project_created" : "Project <strong>__project__</strong> has just created and it has an ID __code__"
+                }
+            },
+
+            "auth" : {
+                "forgot" : "Forgot password",
+                "sign_in" : "Sign In",
+                "sign_up" : "Sign Up",
+                "sign_out" : "Sign Out",
+                "password_new_set" : "Set new password",
+                "input" : {
+                    "surname_label" : "Your surname",
+                    "surname" : "Surname",
+                    "country_label" : "Your country",
+                    "country" : "Country",
+                    "city_label" : "Your city",
+                    "city" : "City",
+                    "name_label" : "Your name",
+                    "name" : "Name",
+                    "phone_label" : "Your phone number",
+                    "phone" : "Phone number",
+                    "login_label" : "Your login",
+                    "login" : "Login",
+                    "password_label" : "Your password",
+                    "password" : "Password",
+                    "password_current_label" : "Your current password",
+                    "password_current" : "Current password",
+                    "password_new_label" : "New password",
+                    "password_new" : "New password",
+                    "password_new_repeat_label" : "Repeat new password",
+                    "password_new_repeat" : "Repeat new password",
+                    "password_repeat_label" : "Repeat your password",
+                    "password_repeat" : "Repeat password",
+                    "email_label" : "Your E-Mail",
+                    "email" : "E-Mail",
+                    "conditions" : "I accept __open__ license agreement __close__",
+                    "remember" : "Remember me",
+                    "button_sign_in" : "Sign In",
+                    "button_sign_up" : "Sign Up",
+                    "button_forgot" : "Reset my password",
+                    "button_password_change" : "Change password",
+                    "button_change" : "Change profile info",
+                    "button_password_new_set" : "Set new password"
+                },
+                "message" : {
+                    "wrong_password_repeat" : "Repeat your password correctly",
+                    "wrong_field" : "Value for field <strong>__field__</strong> is incorrect",
+                    "required_field" : "Field <strong>__field__</strong> is required",
+                    "profile_info_changed" : "Profile info successfully changed"
+                },
+                "restore" : {
+                    "email_sent" : "На E-MAIL __email__ отправлено письмо",
+                    "email_instructions" : "Follow the instructions to reset your password"
+                },
+
+                "cabinet" : {
+                    "profile_edit" : "Edit profile",
+                    "profile_password_change" : "Change my password"
+                }
+            },
+
+            "basic" : {
+                "cancel" : "Cancel",
+                "message" : {
+                    "unexpected_error" : "Unexpected error. Please, try again later"
+                }
+            },
+
+            "special" : {
+                "notfound" : "Page not found"
+            },
+
+            "task_new_button": "New ticket",
+            "key": "__count__  child",
+            "key_plural": "__count__  children",
+            "key_indefinite": "a child",
+            "key_plural_indefinite": "some children"
+        }
+    }
+}

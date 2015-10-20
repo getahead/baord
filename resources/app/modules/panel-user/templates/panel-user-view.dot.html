@@ -3,10 +3,10 @@
     {{? !it.isAuth }}
     <a href="/login" class="panel-user__item button button_theme_hover_blue">
         <i class="fa fa-sign-in"></i>
-        <span>Войти</span>
+        <span>{{=i18n.t('auth.sign_in')}}</span>
     </a>
     <a href="/signup" class="panel-user__item button button_theme_fill-green">
-        <span>Зарегистрироваться</span>
+        <span>{{=i18n.t('auth.sign_up')}}</span>
     </a>
     {{??}}
         <a href="/cabinet" class="panel-user__user">
@@ -16,7 +16,7 @@
 
         <button class="panel-user__logout button button_theme_hover_blue">
             <i class="fa fa-sign-out"></i>
-            <span>Выйти</span>
+            <span>{{=i18n.t('auth.sign_out')}}</span>
         </button>
     {{?}}
 </div>
