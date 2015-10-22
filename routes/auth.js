@@ -11,7 +11,7 @@ router.get('/info', function (req, res, next) {
     }, req.user));
 });
 
-router.post('/info', function (req, res, next) {
+router.patch('/info', function (req, res, next) {
 
     if (!req.user || !req.session.sessionID || !req.body) {
         return res.status(500).send({

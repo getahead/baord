@@ -84,7 +84,7 @@
                 },
                 "restore" : {
                     "title"              : "Restore password",
-                    "email_sent"         : "На E-MAIL __email__ отправлено письмо",
+                    "email_sent"         : "A message has being sent to __email__",
                     "email_instructions" : "Follow the instructions to reset your password",
                     "url_not_correct"    : "Restore password URL is not correct or out of session",
 
@@ -115,6 +115,112 @@
 
     "ru-RU": {
         "translation": {
+            "projects" : {
+                "button_new_task"    : "Создать задачу",
+                "button_new_project" : "Новый проект",
+                "noprojects__header" : "У Вас пока нет активных проектов",
+                "noprojects__text"   : "Создайте новый или присоединитесь к существующему"
+            },
+            "newtask" : {
+                "header" : "Новая задача для проекта",
+                "input" : {
+                    "title" : "Заголовок задачи",
+                    "status": "Статус задачи",
+                    "description"  : "Описание задачи",
+                    "button_create": "Создать задачу"
+                }
+            },
+            "newproject" : {
+                "header" : "Создать новый проект",
+                "input" : {
+                    "title" : "Имя проекта",
+                    "code": "Код проекта",
+                    "statuses": "Статусы проекта",
+                    "status": "Статус задачи",
+                    "description"  : "Описание проекта",
+                    "button_create": "Создать новый проект"
+                },
+                "message" : {
+                    "project_created" : "Проект <strong>__project__</strong> создан, ему присвоен ID __code__"
+                }
+            },
+
+            "auth" : {
+                "forgot"   : "Забыли пароль",
+                "sign_in"  : "Войти",
+                "sign_up"  : "Зарегистрироваться",
+                "sign_out" : "Выйти",
+                "password_new_set" : "Установить новый пароль",
+                "input" : {
+                    "surname_label" : "Ваша фамилия",
+                    "surname"       : "Фамилия",
+                    "country_label" : "Ваша страна",
+                    "country"       : "Страна",
+                    "city_label"    : "Ваш город",
+                    "city"          : "Город",
+                    "name_label"    : "Ваше имя",
+                    "name"          : "Имя",
+                    "phone_label"   : "Ваш телефон",
+                    "phone"         : "Номер телефона",
+                    "login_label"   : "Ваш логин",
+                    "login"         : "Логин",
+                    "password_label": "Ваш пароль",
+                    "password"      : "Пароль",
+                    "password_current_label" : "Ваш текущий пароль",
+                    "password_current"       : "Текущий пароль",
+                    "password_new_label"     : "Новый пароль",
+                    "password_new"              : "Новый пароль",
+                    "password_new_repeat_label" : "Повторите новый пароль",
+                    "password_new_repeat"   : "Повторите новый пароль",
+                    "password_repeat_label" : "Повторите Ваш пароль",
+                    "password_repeat"       : "Повторите Ваш пароль",
+                    "email_label"           : "Ваш E-Mail",
+                    "email"      : "E-Mail",
+                    "conditions" : "Я принимаю __open__ лицензионное соглашение __close__",
+                    "remember"   : "Запомнить меня",
+                    "button_sign_in" : "Войти",
+                    "button_sign_up" : "Зарегистрироваться",
+                    "button_forgot"  : "Восстановить пароль",
+                    "button_password_change"  : "Изменить пароль",
+                    "button_change"           : "Редактировать профиль",
+                    "button_password_new_set" : "Устаноить новый пароль"
+                },
+                "message" : {
+                    "wrong_password_repeat" : "Вы неправильно повторили пароль",
+                    "wrong_field"           : "Поле <strong>__field__</strong> заполнено неправильно",
+                    "required_field"        : "Поле <strong>__field__</strong> не должно быть пустым",
+                    "unique_field"          : "Такой <strong>__field__</strong> уже зарегистрирован в системе",
+                    "profile_info_changed"  : "Информация о профиле успешно изменена",
+                    "session_is_incorrect"  : "Сессия сбросилась или истекла, войдите в систему снова",
+                    "fill_all_field" : "Пожалуйста, заполните обязательные поля",
+                    "user_not_found" : "Такой пользователь не найден",
+                    "access_denied"  : "Доступ запрещен. Логин и пароль не совпадают"
+                },
+                "restore" : {
+                    "title"              : "Восстановить пароль",
+                    "email_sent"         : "На E-MAIL __email__ отправлено письмо",
+                    "email_instructions" : "Следайте инструкциям в письме, чтобы восстановить пароль.",
+                    "url_not_correct"    : "Ссылка для восстановления пароля недействительна или истекло время ее действия",
+
+                    "mail" : {
+                        "text_todo" : "Проследуйте по ссылке для восстановленя Вашего пароля",
+                        "notice"    : "Внимание! Ссылка действительна только в том браузере, в котором Вы сбрасывали пароль"
+                    }
+                }
+            },
+
+            "cabinet" : {
+                "profile_edit"            : "Редактировать профиль",
+                "profile_password_change" : "Изменить пароль"
+            },
+
+            "basic" : {
+                "cancel"  : "Отмена",
+                "message" : {
+                    "unexpected_error" : "Непредвиденная ошибка сервера. Попробуйте позже"
+                }
+            },
+
             "special" : {
                 "notfound" : "Страница не найдена"
             }

@@ -17,7 +17,6 @@ UserModel = Backbone.Model.extend({
             url  : '/auth/logout',
             success : function (res) {
                 App.appRouter.navigate('/', {trigger : true});
-                $.removeCookie("sessionID", {path: '/'});
                 this.clear();
             }.bind(this)
         })
