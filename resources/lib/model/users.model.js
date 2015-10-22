@@ -6,7 +6,6 @@ var UserSchema,
 
 
 UserSchema = new db.Schema({
-    _id       : db.Schema.Types.ObjectId,
     login     : {
         type     : String,
         required : true,
@@ -54,7 +53,7 @@ UserSchema = new db.Schema({
     }
 });
 
-UserSchema.plugin(uniqueValidator, { message: 'Такой {PATH} уже существует' });
+UserSchema.plugin(uniqueValidator, { message: 'Same {PATH} already exists' });
 
 UserSchema.path('email').validate(function (email) {
     var regex =  /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/;
@@ -97,7 +96,7 @@ UserSchema.statics.authorize = function (username, password, req, callback) {
         } else {
             callback({name : 'Access denied', errors : {
                 access : {
-                    message : 'Ошибка входа. Логин и пароль не подходят'
+                    message : req.t('auth.message.access_denied')
                 }
             }});
         }
@@ -105,7 +104,7 @@ UserSchema.statics.authorize = function (username, password, req, callback) {
 }
 
 UserSchema.statics.authorizeBySessionID = function (sessionID, req, callback) {
-    User = this;
+    var User = this;
 
     User.findOne({ sessionID : sessionID}, function (err, user) {
         if (err) return next(err);
@@ -127,7 +126,7 @@ UserSchema.statics.authorizeBySessionID = function (sessionID, req, callback) {
                 maxInboxCount   : user.maxInboxCount
             });
         } else {
-            callback({error : 'session is not correct'});
+            callback({error : req.t('auth.message.session_is_incorrect')});
         }
     });
 }
@@ -140,7 +139,7 @@ UserSchema.statics.forgotPassword = function (email, req, callback) {
             name : 'No user found',
             errors : {
                 email : {
-                    message : 'Пользователь не найден'
+                    message : req.t('auth.message.user_not_found')
                 }
             }
         });
@@ -163,7 +162,7 @@ UserSchema.statics.restorePassword = function (restoreID, password, req, callbac
             name : 'No user found',
             errors : {
                 email : {
-                    message : 'Ссылка для восстановления пароля недействительна'
+                    message : req.t('auth.restore.url_not_correct')
                 }
             }
         };

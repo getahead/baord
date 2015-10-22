@@ -5,7 +5,6 @@ var express = require('express'),
     User = require('../resources/lib/model/users.model');
 
 router.get('/info', function (req, res, next) {
-    console.log(req.i18n.t('special.notfound'));
 
     res.send(extend({
         isAuth : (req.user) ? true : false
@@ -19,7 +18,7 @@ router.post('/info', function (req, res, next) {
             name : 'Access denied',
             errors : {
                 access : {
-                    message : 'Ошибка авторизации. Возможно, Вы вошли с другого устройства'
+                    message : req.t('auth.message.session_is_incorrect')
                 }
             }
         });
@@ -34,7 +33,7 @@ router.post('/info', function (req, res, next) {
                     name : 'Passwords do not match to each other',
                     errors : {
                         password : {
-                            message : 'Вы неверно повторили новый пароль'
+                            message : req.t('auth.message.wrong_password_repeat')
                         }
                     }
                 });
@@ -59,7 +58,7 @@ router.post('/info', function (req, res, next) {
                 name : 'Password is required',
                 errors : {
                     password : {
-                        message : 'Заполните все поля'
+                        message : req.t('auth.message.fill_all_field')
                     }
                 }
             });
@@ -82,7 +81,7 @@ router.post('/info', function (req, res, next) {
                 name : 'Duplicate for field email',
                 errors : {
                     email : {
-                        message : 'Такой E-MAIL уже зарегистрирован в системе'
+                        message : req.t('auth.message.unique_field', {field : 'EMAIL'})
                     }
                 }
             });
@@ -94,7 +93,7 @@ router.post('/info', function (req, res, next) {
             name : 'Email is required',
             errors : {
                 email : {
-                    message : 'Поле E-MAIL обязательно'
+                    message : req.t('auth.message.required_field', {field : 'EMAIL'})
                 }
             }
         });
@@ -114,7 +113,7 @@ router.post('/forgot', function (req, res, next) {
             name : 'Fill the field E-MAil',
             errors : {
                 email : {
-                    message : 'Поле E-MAIL должно быть заполнено'
+                    message : req.t('auth.message.required_field', {field : 'EMAIL'})
                 }
             }
         });
@@ -127,9 +126,9 @@ router.post('/forgot', function (req, res, next) {
 
         restoreLink = 'http://www.chb.su/login/restore/' + restoreID;
 
-        messageHTML = '<p>Чтобы восстановить пароль, пройдите по ссылке ' +
-            '<a href="' + restoreLink + '">' + restoreLink + '</a></p>' +
-            '<p>Внимание! Данная ссылка действительна только в том браузере, в котором Вы сбрасывали пароль.</p>'
+        messageHTML = '<p>'+ req.t('auth.restore.email.text_todo') +
+            ' <a href="' + restoreLink + '">' + restoreLink + '</a></p>' +
+            '<p>' + req.t('auth.restore.email.notice') + '</p>';
 
         mailTransport.sendMail({
             to          : [ { address : email } ],
@@ -141,7 +140,7 @@ router.post('/forgot', function (req, res, next) {
             },
             from        : 'no-reply@chb.su',
             sender      : 'no-reply@chb.su',
-            subject     : 'Восстановление пароля',
+            subject     : req.t('auth.restore.title'),
             html        : messageHTML
         });
 
@@ -155,8 +154,12 @@ router.post('/restore', function (req, res, next) {
         repeatpassword = req.body.repeatpassword,
         errors = {};
 
-    if (!restoreID) errors.restoreID = {message : 'Ссылка для восстановления пароля неправильная'};
-    if (!password || password !== repeatpassword) errors.password = {message : 'Повторите пароль правильно'};
+    if (!restoreID) {
+        errors.restoreID = {message : req.t('auth.restore.url_not_correct')};
+    }
+    if (!password || password !== repeatpassword) {
+        errors.password = {message : req.t('auth.message.wrong_password_repeat')};
+    }
 
     if (Object.keys(errors).length > 0) {
         return res.status(500).send({

@@ -17,11 +17,10 @@ var App,
     ProjectsCollection = require('collection/projects.collection'),
     ProjectModel       = require('model/project.model'),
     UserModel          = require('model/user.model'),
-    translations       = require('json!../locales/en.json');
+    translations       = require('json!../locales/translation.json');
 
 
 i18n.init({
-    lng      : 'en-US',
     resStore : translations
 });
 

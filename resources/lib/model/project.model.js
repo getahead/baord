@@ -22,7 +22,7 @@ ProjectsSchema = new db.Schema({
     allowedGroups      : [db.Schema.Types.ObjectId]
 });
 
-ProjectsSchema.plugin(uniqueValidator, { message: 'Такой {PATH} уже существует' });
+ProjectsSchema.plugin(uniqueValidator, { message: 'Same {PATH} already exists' });
 Projects = db.model('projects', ProjectsSchema);
 
 module.exports = Projects;

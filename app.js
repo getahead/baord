@@ -8,10 +8,10 @@ var express = require('express'),
     action = require('./routes/action'),
     auth = require('./routes/auth'),
     i18n = require("i18next"),
-    translates = require('./resources/locales/en.json'),
+    translates = require('./resources/locales/translation.json'),
     app;
 
-i18n.init({ lng: "en-US", resources : translates });
+i18n.init({ resStore : translates });
 
 app = express();
 
@@ -33,8 +33,8 @@ app.use(session({
     saveUninitialized: true
 }));
 
-app.use(require('./resources/lib/middleware/loadUser'));
 app.use(i18n.handle);
+app.use(require('./resources/lib/middleware/loadUser'));
 app.use('/action', action);
 app.use('/auth', auth);
 
