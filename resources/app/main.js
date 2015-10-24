@@ -21,6 +21,7 @@ var App,
 
 
 i18n.init({
+    fallbackLng: 'en-EN',
     resStore : translations
 });
 
@@ -60,6 +61,7 @@ App.Behaviors.ModalBehavior = require('behaviors/modal/modal.behavior');
 
 require('modules/projects/projects');
 require('modules/tasks/tasks');
+require('modules/language-switcher/language-switcher');
 require('modules/newtask/newtask');
 require('modules/newproject/newproject');
 require('modules/task/task');

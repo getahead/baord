@@ -1,0 +1,39 @@
+.language-switcher
+    $size = 20px
+
+    position relative
+    size 100% $size
+    margin 24px 10px 0 0
+
+    overflow hidden
+
+    line-height $size
+    cursor pointer
+
+
+    &:hover
+        position absolute
+        overflow auto
+        height auto
+
+
+    &__item
+        border-radius 50%
+        size $size
+
+        margin 0 0 10px
+        background-size cover
+        opacity 0.6
+
+
+        &:hover
+            box-shadow 0 0 2px rgba(0, 0, 0, 0.5)
+            opacity 1
+
+
+        &_ru
+            background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDkgNiIgd2lkdGg9IjkwMCIgaGVpZ2h0PSI2MDAiPjxyZWN0IGZpbGw9IiNmZmYiIHdpZHRoPSI5IiBoZWlnaHQ9IjMiLz48cmVjdCBmaWxsPSIjZDUyYjFlIiB5PSIzIiB3aWR0aD0iOSIgaGVpZ2h0PSIzIi8+PHJlY3QgZmlsbD0iIzAwMzlhNiIgeT0iMiIgd2lkdGg9IjkiIGhlaWdodD0iMiIvPjwvc3ZnPg==')
+
+
+        &_en
+            background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxMjM1IiBoZWlnaHQ9IjY1MCIgdmlld0JveD0iMCAwIDc0MTAgMzkwMCI+PHJlY3Qgd2lkdGg9Ijc0MTAiIGhlaWdodD0iMzkwMCIgZmlsbD0iI2IyMjIzNCIvPjxwYXRoIGQ9Ik0wLDQ1MEg3NDEwbTAsNjAwSDBtMCw2MDBINzQxMG0wLDYwMEgwbTAsNjAwSDc0MTBtMCw2MDBIMCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMwMCIvPjxyZWN0IHdpZHRoPSIyOTY0IiBoZWlnaHQ9IjIxMDAiIGZpbGw9IiMzYzNiNmUiLz48ZyBmaWxsPSIjZmZmIj48ZyBpZD0iczE4Ij48ZyBpZD0iczkiPjxnIGlkPSJzNSI+PGcgaWQ9InM0Ij48cGF0aCBpZD0icyIgZD0iTTI0Nyw5MCAzMTcuNTM0MjMwLDMwNy4wODIwMzkgMTMyLjg3MzIxOCwxNzIuOTE3OTYxSDM2MS4xMjY3ODJMMTc2LjQ2NTc3MCwzMDcuMDgyMDM5eiIvPjx1c2UgeGxpbms6aHJlZj0iI3MiIHk9IjQyMCIvPjx1c2UgeGxpbms6aHJlZj0iI3MiIHk9Ijg0MCIvPjx1c2UgeGxpbms6aHJlZj0iI3MiIHk9IjEyNjAiLz48L2c+PHVzZSB4bGluazpocmVmPSIjcyIgeT0iMTY4MCIvPjwvZz48dXNlIHhsaW5rOmhyZWY9IiNzNCIgeD0iMjQ3IiB5PSIyMTAiLz48L2c+PHVzZSB4bGluazpocmVmPSIjczkiIHg9IjQ5NCIvPjwvZz48dXNlIHhsaW5rOmhyZWY9IiNzMTgiIHg9Ijk4OCIvPjx1c2UgeGxpbms6aHJlZj0iI3M5IiB4PSIxOTc2Ii8+PHVzZSB4bGluazpocmVmPSIjczUiIHg9IjI0NzAiLz48L2c+PC9zdmc+')

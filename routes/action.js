@@ -109,9 +109,4 @@ router.get('/task/:projectId/:taskId', function (req, res, next) {
     });
 });
 
-router.get('/setlocale/:locale', function (req, res) {
-    res.cookie('i18next', req.params.locale);
-    res.json({ locale : req.params.locale})
-});
-
 module.exports = router;
