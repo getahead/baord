@@ -32,7 +32,7 @@ AuthView = Marionette.ItemView.extend({
 
         this.model.set(data);
 
-        this.model.save(null, {
+        this.model.save(data, {
             wait    : true,
             success : $.proxy(this._handleSuccess, this),
             error   : $.proxy(this._handleError, this)

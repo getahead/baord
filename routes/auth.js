@@ -47,7 +47,7 @@ router.patch('/info', function (req, res, next) {
                     if (err) return next(err);
 
                     req.body.login = user.login;
-                    req.body.password = req.body.user.newpassword;
+                    req.body.password = post.newpassword;
 
                     authorize(req, res, next);
                 });
